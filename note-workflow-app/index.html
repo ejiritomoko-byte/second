@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>note下書き・リライト運用</title>
+  <link rel="stylesheet" href="note-workflow.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">note Workflow</span>
+        <h1>下書き・リライト運用ボード</h1>
+        <p>下書き、比較記事、既存記事のリライトをひとつの画面で管理します。ChatGPTとClaudeを往復する前提で、次に投げるプロンプトまでその場で作れるようにしました。</p>
+      </div>
+      <div class="hero-actions">
+        <a class="ghost-link" href="../index.html">一覧へ戻る</a>
+        <button class="ghost-btn" id="newItemBtn" type="button">新しい項目を作る</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel stats-panel">
+        <div class="panel-head">
+          <div>
+            <h2>全体の流れ</h2>
+            <p>下書きとリライトを混ぜて見ても、今どこが詰まっているかがすぐ分かるようにしています。</p>
+          </div>
+          <div class="panel-actions">
+            <button id="exportBtn" type="button">JSONを書き出し</button>
+            <button id="resetBtn" type="button">初期データに戻す</button>
+          </div>
+        </div>
+        <div class="stats-grid" id="statsGrid"></div>
+      </section>
+
+      <section class="panel board-panel">
+        <div class="panel-head">
+          <div>
+            <h2>運用ボード</h2>
+            <p>アカウント・種別・優先度で絞って、今週動かす記事を絞れます。</p>
+          </div>
+        </div>
+        <div class="toolbar">
+          <label>
+            <span>検索</span>
+            <input id="searchInput" type="search" placeholder="タイトル、論点、次アクション">
+          </label>
+          <label>
+            <span>アカウント</span>
+            <select id="accountFilter">
+              <option value="all">すべて</option>
+              <option value="moco_edu_note">moco_edu_note</option>
+              <option value="learnfromfailure">learnfromfailure</option>
+            </select>
+          </label>
+          <label>
+            <span>種別</span>
+            <select id="typeFilter">
+              <option value="all">すべて</option>
+              <option value="draft">新規下書き</option>
+              <option value="rewrite">リライト</option>
+              <option value="comparison">比較記事</option>
+            </select>
+          </label>
+          <label>
+            <span>優先度</span>
+            <select id="priorityFilter">
+              <option value="all">すべて</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </label>
+        </div>
+        <div class="board" id="board"></div>
+      </section>
+
+      <section class="panel detail-panel">
+        <div class="panel-head">
+          <div>
+            <h2>項目詳細</h2>
+            <p>下書きもリライトも同じフォームで持ち、必要なら途中の違和感や加えたい意見も残せます。</p>
+          </div>
+          <span class="current-id" id="currentIdLabel"></span>
+        </div>
+        <form id="itemForm" class="editor-grid">
+          <label>
+            <span>タイトル</span>
+            <input name="title" type="text" required>
+          </label>
+          <label>
+            <span>アカウント</span>
+            <select name="account">
+              <option value="moco_edu_note">moco_edu_note</option>
+              <option value="learnfromfailure">learnfromfailure</option>
+            </select>
+          </label>
+          <label>
+            <span>種別</span>
+            <select name="type">
+              <option value="draft">新規下書き</option>
+              <option value="rewrite">リライト</option>
+              <option value="comparison">比較記事</option>
+            </select>
+          </label>
+          <label>
+            <span>進行ステータス</span>
+            <select name="status">
+              <option value="Idea">Idea</option>
+              <option value="Drafting">Drafting</option>
+              <option value="Polishing">Polishing</option>
+              <option value="Rewrite">Rewrite</option>
+              <option value="Ready">Ready</option>
+            </select>
+          </label>
+          <label>
+            <span>優先度</span>
+            <select name="priority">
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </label>
+          <label>
+            <span>次の締切メモ</span>
+            <input name="due" type="text" placeholder="例: 今週中 / 4月末 / 画像整理後">
+          </label>
+          <label class="full">
+            <span>現在の本文・要約</span>
+            <textarea name="summary" rows="4" placeholder="本文全部を貼らなくても、今の論点や状態が分かる要約でOKです。"></textarea>
+          </label>
+          <label class="full">
+            <span>次にやること</span>
+            <textarea name="nextAction" rows="3" placeholder="例: 画像だけ整理する / 理科の実験問題データを表にする / 書き出しだけ強くする"></textarea>
+          </label>
+          <label class="full">
+            <span>違和感・補強したい点</span>
+            <textarea name="concerns" rows="3" placeholder="AIっぽい、論点が飛ぶ、意見が弱い、説明が長い、など。"></textarea>
+          </label>
+          <label>
+            <span>いま投げる相手</span>
+            <select name="targetAi">
+              <option value="ChatGPT">ChatGPT</option>
+              <option value="Claude">Claude</option>
+            </select>
+          </label>
+          <label>
+            <span>目的</span>
+            <select name="aiGoal">
+              <option value="first-draft">初稿をつくる</option>
+              <option value="clarity-pass">わかりやすく整える</option>
+              <option value="humanize-pass">AIっぽさを抜く</option>
+              <option value="opinion-pass">意見を足す</option>
+              <option value="rewrite-pass">既存記事をリライトする</option>
+              <option value="comparison-pass">比較記事として整理する</option>
+            </select>
+          </label>
+          <label class="full">
+            <span>参照データ・元記事</span>
+            <textarea name="source" rows="3" placeholder="例: 理科4-1のデータ、旧note記事URL、スクショあり、国語記事と同じ構成、など。"></textarea>
+          </label>
+          <div class="form-actions full">
+            <button type="submit">保存する</button>
+            <button type="button" id="duplicateBtn">複製する</button>
+            <button type="button" id="archiveBtn">完了扱いにする</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel prompt-panel">
+        <div class="panel-head">
+          <div>
+            <h2>AI受け渡しプロンプト</h2>
+            <p>いま選んでいる項目から、そのまま貼れる依頼文を自動生成します。</p>
+          </div>
+          <button id="generatePromptBtn" type="button">プロンプト生成</button>
+        </div>
+        <div class="prompt-grid">
+          <div class="prompt-box">
+            <div class="prompt-label">次に投げる内容</div>
+            <textarea id="promptOutput" rows="12" readonly placeholder="項目を選んで「プロンプト生成」を押すと、ここに表示されます。"></textarea>
+          </div>
+          <div class="check-card">
+            <div class="prompt-label">公開前の見る場所</div>
+            <ul class="check-list" id="reviewChecklist"></ul>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="note-workflow.js"></script>
+</body>
+</html>

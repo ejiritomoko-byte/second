@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>国語 4-1 テスト対策</title>
+  <link rel="stylesheet" href="study-app.css">
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div class="hero">
+        <span class="eyebrow" id="eyebrow"></span>
+        <div>
+          <h1 id="appTitle"></h1>
+          <p id="appDescription"></p>
+        </div>
+        <div class="hero-meta" id="heroMeta"></div>
+      </div>
+    </header>
+
+    <main>
+      <div class="row" style="margin-top:0;margin-bottom:16px;">
+        <a class="sub" href="index.html">教科一覧にもどる</a>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="summary">まとめ</button>
+        <button class="tab-btn" data-tab="flash">暗記カード</button>
+        <button class="tab-btn" data-tab="quiz">4択クイズ</button>
+        <button class="tab-btn" data-tab="check">確認</button>
+      </div>
+
+      <section id="summary" class="panel active">
+        <div class="section-grid">
+          <article class="card">
+            <div class="card-head">
+              <h2>テスト範囲の要点</h2>
+              <span class="pill" id="pointCount"></span>
+            </div>
+            <div class="point-list" id="summaryPoints"></div>
+          </article>
+          <article class="card">
+            <div class="card-head">
+              <h2>学習の流れ</h2>
+              <span class="pill">進め方</span>
+            </div>
+            <div class="timeline" id="timeline"></div>
+          </article>
+          <article class="card">
+            <div class="card-head">
+              <h2>重要語句</h2>
+              <span class="pill">ことば</span>
+            </div>
+            <div class="terms" id="terms"></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="flash" class="panel">
+        <article class="card">
+          <div class="card-head">
+            <div>
+              <h2>暗記カード</h2>
+              <p>意味や読みをすばやく確認できます。</p>
+            </div>
+            <span class="pill" id="flashCount"></span>
+          </div>
+          <div class="flash-grid" id="flashGrid"></div>
+        </article>
+      </section>
+
+      <section id="quiz" class="panel">
+        <article class="card">
+          <div class="quiz-head">
+            <h2>4択クイズ</h2>
+            <div class="progress" id="progress"></div>
+          </div>
+          <div class="question" id="question"></div>
+          <div class="choices" id="choices"></div>
+          <div class="result" id="result"></div>
+          <div class="row">
+            <button id="nextBtn" class="action" style="display:none;">次の問題</button>
+            <button id="restartBtn" class="sub">もう一回</button>
+          </div>
+        </article>
+      </section>
+
+      <section id="check" class="panel">
+        <article class="card">
+          <div class="card-head">
+            <div>
+              <h2>学習チェック</h2>
+              <p>本番前にできることを確認します。</p>
+            </div>
+            <span class="pill completion" id="completionRate"></span>
+          </div>
+          <div class="checklist" id="checklist"></div>
+        </article>
+      </section>
+    </main>
+
+    <footer id="footerNote"></footer>
+  </div>
+
+  <script src="study-app.js"></script>
+  <script>
+    initStudyApp({
+      storageKey: "kokugo-4-1",
+      pageTitle: "国語 4-1 四字熟語・漢字",
+      subject: "国語",
+      unit: "4-1 四字熟語・漢字",
+      description: "四字熟語の意味と、テストに出そうな漢字の読み書きを分けて練習できるアプリです。",
+      meta: [
+        "範囲: 四字熟語 / 漢字",
+        "おすすめ: 意味→使い方→漢字の順で確認",
+        "注意: 国語は教科書・プリントの語句と合わせて最終確認"
+      ],
+      summaryPoints: [
+        { title: "四字熟語は意味をセットで覚える", body: "漢字だけでなく、『どんなようすや気持ちを表す言葉か』まで言えるようにします。" },
+        { title: "似た言葉とまちがえない", body: "四字熟語は一字でも違うと別の言葉です。順番まで正しく覚えるのが大事です。" },
+        { title: "漢字は読み・書き・使い方を確認", body: "書けるだけでなく、文の中でどんな意味で使うかも見ておくと強いです。" },
+        { title: "送りがなやはねにも注意", body: "テストでは細かい字の形も見られます。止め・はね・はらいをていねいに書きます。" }
+      ],
+      timeline: [
+        { year: "STEP 1", event: "四字熟語を見て意味を言えるかチェックする" },
+        { year: "STEP 2", event: "暗記カードで意味や使い方を確認する" },
+        { year: "STEP 3", event: "漢字の読み書きをクイズで見直す" },
+        { year: "STEP 4", event: "最後にノートやプリントで実際に書いて仕上げる" }
+      ],
+      terms: [
+        { word: "四字熟語", meaning: "四つの漢字でできた決まった言い方。意味をまとめて表す。" },
+        { word: "意味", meaning: "『どんなことを表すのか』を自分の言葉で言えるようにする。" },
+        { word: "熟語", meaning: "二字以上の漢字が結び付いてできた言葉。" },
+        { word: "用例", meaning: "その言葉を文の中で使った例。" }
+      ],
+      flashcards: [
+        { front: "一日千秋", back: "一日が千年にも感じられるほど、待ち遠しいこと。" },
+        { front: "以心伝心", back: "言葉に出さなくても、おたがいの気持ちが通じ合うこと。" },
+        { front: "試行錯誤", back: "いろいろ試しながら、失敗と工夫をくり返してやってみること。" },
+        { front: "公明正大", back: "かくしごとや不正がなく、正しく立派なようす。" },
+        { front: "『志』", back: "こころざし。目標に向かう強い気持ち。" },
+        { front: "『誤』", back: "あやまる、あやまり。まちがいに関係する漢字。" },
+        { front: "『律』", back: "きまり、おきて。『法律』の『律』。" },
+        { front: "『段』", back: "だん。順序や区切りを表す漢字。" },
+        { front: "『招』", back: "まねく。人を呼びよせること。" },
+        { front: "『映』", back: "うつる、うつす。光や姿が見えること。" },
+        { front: "『値』", back: "ねうち、あたい。物の価値に関係する漢字。" },
+        { front: "『亡』", back: "なくなる、ほろびる。死や消失に関係する漢字。" },
+        { front: "一日千秋の使い方", back: "『遠足の日が一日千秋の思いで待ち遠しかった。』" },
+        { front: "以心伝心の使い方", back: "『友だちとは目を合わせただけで以心伝心だった。』" },
+        { front: "試行錯誤の使い方", back: "『自由研究では試行錯誤しながら作り方を考えた。』" },
+        { front: "公明正大の使い方", back: "『公明正大なやり方で係を決めた。』" },
+        { front: "『志』を使う言葉", back: "志を立てる、志をもつ。" },
+        { front: "『誤』を使う言葉", back: "誤答、誤解、誤り。" },
+        { front: "『律』を使う言葉", back: "法律、規律、自律。" },
+        { front: "『段』を使う言葉", back: "階段、段落、手段。" },
+        { front: "『招』を使う言葉", back: "招待、招く、招集。" },
+        { front: "『映』を使う言葉", back: "映画、反映、映る。" },
+        { front: "『値』を使う言葉", back: "価値、数値、値上がり。" },
+        { front: "『亡』を使う言葉", back: "死亡、亡くす、亡国。" }
+      ],
+      quiz: [
+        {
+          question: "『一日千秋』の意味としていちばん近いものはどれ？",
+          choices: ["とても短い時間", "待ち遠しくて長く感じること", "一日中勉強すること", "秋の一日を楽しむこと"],
+          answerIndex: 1,
+          explanation: "待つ時間がとても長く感じられる、という意味です。"
+        },
+        {
+          question: "『以心伝心』に近い内容はどれ？",
+          choices: ["大声で伝えること", "手紙で知らせること", "言わなくても気持ちが通じること", "心を入れかえること"],
+          answerIndex: 2,
+          explanation: "言葉を使わなくても心が通じることを表します。"
+        },
+        {
+          question: "『試行錯誤』に合う説明はどれ？",
+          choices: ["何も考えずに進むこと", "試したり直したりをくり返すこと", "早く終わらせること", "答えを写すこと"],
+          answerIndex: 1,
+          explanation: "何度もためしながら方法を見つけるときに使います。"
+        },
+        {
+          question: "『公明正大』の反対に近いようすはどれ？",
+          choices: ["正しく堂々としている", "明るく元気である", "こそこそとごまかす", "勉強をがんばる"],
+          answerIndex: 2,
+          explanation: "公明正大は、不正がなく正しいようすです。"
+        },
+        {
+          question: "『こころざし』と読む漢字はどれ？",
+          choices: ["誌", "志", "師", "試"],
+          answerIndex: 1,
+          explanation: "『志』は目標に向かう気持ちを表します。"
+        },
+        {
+          question: "『あやまち』に関係する漢字として正しいのはどれ？",
+          choices: ["語", "護", "誤", "悟"],
+          answerIndex: 2,
+          explanation: "『誤り』の『誤』です。"
+        },
+        {
+          question: "『公明正大』に近いようすはどれ？",
+          choices: ["こそこそと隠す", "正しく堂々としている", "あわてて逃げる", "気分で決める"],
+          answerIndex: 1,
+          explanation: "公明正大は、かくしごとがなく正しいようすです。"
+        },
+        {
+          question: "『こころざし』を表す漢字を使った言葉として自然なのはどれ？",
+          choices: ["志を立てる", "志を落とす石", "志を食べる", "志を洗う"],
+          answerIndex: 0,
+          explanation: "『志を立てる』は目標を決める言い方です。"
+        },
+        {
+          question: "『招く』の意味にいちばん近いものはどれ？",
+          choices: ["追い出す", "まねき入れる", "見つめる", "書き直す"],
+          answerIndex: 1,
+          explanation: "『招く』は人を呼んだり、まねき入れたりすることです。"
+        },
+        {
+          question: "『値』を使う言葉として正しいものはどれ？",
+          choices: ["値上がり", "置上がり", "直上がり", "知上がり"],
+          answerIndex: 0,
+          explanation: "『値』はねうちや金額に関係する漢字です。"
+        },
+        {
+          question: "『映る』の説明として正しいものはどれ？",
+          choices: ["音が聞こえること", "姿や光が見えること", "においが広がること", "手でつかむこと"],
+          answerIndex: 1,
+          explanation: "鏡や水面に姿が見えるときなどに『映る』を使います。"
+        },
+        {
+          question: "『段』を使った言葉としていちばん自然なのはどれ？",
+          choices: ["階段", "海段", "貝段", "絵段"],
+          answerIndex: 0,
+          explanation: "『段』は区切りや順序を表し、『階段』などで使います。"
+        },
+        {
+          question: "『亡くす』に近い意味はどれ？",
+          choices: ["なくしてしまう", "ひろう", "ならべる", "温める"],
+          answerIndex: 0,
+          explanation: "『亡くす』は人を失う、命をなくすなどの意味で使います。"
+        },
+        {
+          question: "『一日千秋』を使う文としていちばん自然なのはどれ？",
+          choices: ["宿題を一日千秋で解いた", "発表会の日を一日千秋の思いで待った", "一日千秋を食べた", "一日千秋で走った"],
+          answerIndex: 1,
+          explanation: "待ち遠しい気持ちを表すときに使います。"
+        },
+        {
+          question: "『以心伝心』が合う場面はどれ？",
+          choices: ["手紙を何枚も書く", "言葉がなくても気持ちが通じる", "遠くまで走る", "本を静かに読む"],
+          answerIndex: 1,
+          explanation: "言葉がなくても心が通じることです。"
+        },
+        {
+          question: "『試行錯誤』の『錯』に近い意味はどれ？",
+          choices: ["まじる・まちがう", "食べる", "休む", "歌う"],
+          answerIndex: 0,
+          explanation: "試したりまちがえたりしながら考えることを表します。"
+        },
+        {
+          question: "『公明正大』な行動として正しいのはどれ？",
+          choices: ["こっそりルールを変える", "みんなに見えるように公平に決める", "気分だけで決める", "友だちだけをえこひいきする"],
+          answerIndex: 1,
+          explanation: "公平でかくしごとのないやり方です。"
+        },
+        {
+          question: "『律』を使う言葉として正しいものはどれ？",
+          choices: ["法津", "法律", "法率", "法立"],
+          answerIndex: 1,
+          explanation: "『法律』の『律』です。"
+        },
+        {
+          question: "『招待』の『招』の意味に近いのはどれ？",
+          choices: ["まねく", "しずめる", "きざむ", "たたかう"],
+          answerIndex: 0,
+          explanation: "人を呼びよせる意味があります。"
+        },
+        {
+          question: "『映画』の『映』と同じ漢字を使うものはどれ？",
+          choices: ["英会話", "反映", "営業", "中央"],
+          answerIndex: 1,
+          explanation: "『反映』も『映』を使います。"
+        },
+        {
+          question: "『値上がり』に使う漢字はどれ？",
+          choices: ["直", "値", "置", "植"],
+          answerIndex: 1,
+          explanation: "ねうちや金額を表すときは『値』です。"
+        },
+        {
+          question: "『段落』の『段』に近い意味はどれ？",
+          choices: ["区切り", "色", "音", "速さ"],
+          answerIndex: 0,
+          explanation: "段は順序や区切りを表すことがあります。"
+        },
+        {
+          question: "『亡国』の『亡』の意味に近いのはどれ？",
+          choices: ["国がほろびる", "国を広げる", "国をつくる", "国を守る"],
+          answerIndex: 0,
+          explanation: "亡は『ほろびる』『なくなる』の意味です。"
+        },
+        {
+          question: "四字熟語を覚えるときに大切なことはどれ？",
+          choices: ["漢字一字だけを見る", "意味と使い方をセットで覚える", "声に出さない", "順番は気にしない"],
+          answerIndex: 1,
+          explanation: "意味と用例まで確認すると定着しやすいです。"
+        }
+      ],
+      checkItems: [
+        { title: "四字熟語を見て意味を言える", note: "少なくとも4つは説明できるようにします。" },
+        { title: "漢字をていねいに書ける", note: "止め・はね・はらいまで意識します。" },
+        { title: "まちがえた語句をノートに書き直した", note: "見るだけで終わらせず、手で書いておくと残ります。" },
+        { title: "教科書やプリントの語句も見直した", note: "アプリと学校の範囲を合わせて最終確認します。" }
+      ],
+      footer: "国語は画像から読み取れた範囲をもとに、四字熟語と漢字の復習向けにまとめています。学校のプリントと一緒に使うとより安心です。"
+    });
+  </script>
+</body>
+</html>

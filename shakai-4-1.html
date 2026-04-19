@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>社会 4-1 テスト対策</title>
+  <link rel="stylesheet" href="study-app.css">
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div class="hero">
+        <span class="eyebrow" id="eyebrow"></span>
+        <div>
+          <h1 id="appTitle"></h1>
+          <p id="appDescription"></p>
+        </div>
+        <div class="hero-meta" id="heroMeta"></div>
+      </div>
+    </header>
+
+    <main>
+      <div class="row" style="margin-top:0;margin-bottom:16px;">
+        <a class="sub" href="index.html">教科一覧にもどる</a>
+      </div>
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="summary">まとめ</button>
+        <button class="tab-btn" data-tab="flash">暗記カード</button>
+        <button class="tab-btn" data-tab="quiz">4択クイズ</button>
+        <button class="tab-btn" data-tab="check">確認</button>
+      </div>
+
+      <section id="summary" class="panel active">
+        <div class="section-grid">
+          <article class="card">
+            <div class="card-head">
+              <h2>テスト範囲の要点</h2>
+              <span class="pill" id="pointCount"></span>
+            </div>
+            <div class="point-list" id="summaryPoints"></div>
+          </article>
+          <article class="card">
+            <div class="card-head">
+              <h2>流れで整理</h2>
+              <span class="pill">飛鳥時代</span>
+            </div>
+            <div class="timeline" id="timeline"></div>
+          </article>
+          <article class="card">
+            <div class="card-head">
+              <h2>重要語句</h2>
+              <span class="pill">歴史用語</span>
+            </div>
+            <div class="terms" id="terms"></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="flash" class="panel">
+        <article class="card">
+          <div class="card-head">
+            <div>
+              <h2>暗記カード</h2>
+              <p>人物・制度・できごとのつながりを覚えます。</p>
+            </div>
+            <span class="pill" id="flashCount"></span>
+          </div>
+          <div class="flash-grid" id="flashGrid"></div>
+        </article>
+      </section>
+
+      <section id="quiz" class="panel">
+        <article class="card">
+          <div class="quiz-head">
+            <h2>4択クイズ</h2>
+            <div class="progress" id="progress"></div>
+          </div>
+          <div class="question" id="question"></div>
+          <div class="choices" id="choices"></div>
+          <div class="result" id="result"></div>
+          <div class="row">
+            <button id="nextBtn" class="action" style="display:none;">次の問題</button>
+            <button id="restartBtn" class="sub">もう一回</button>
+          </div>
+        </article>
+      </section>
+
+      <section id="check" class="panel">
+        <article class="card">
+          <div class="card-head">
+            <div>
+              <h2>学習チェック</h2>
+              <p>年号・人物・制度をセットで言えるか確認します。</p>
+            </div>
+            <span class="pill completion" id="completionRate"></span>
+          </div>
+          <div class="checklist" id="checklist"></div>
+        </article>
+      </section>
+    </main>
+    <footer id="footerNote"></footer>
+  </div>
+
+  <script src="study-app.js"></script>
+  <script>
+    initStudyApp({
+      storageKey: "shakai-4-1",
+      pageTitle: "社会 4-1 飛鳥時代2",
+      subject: "社会",
+      unit: "4-1 飛鳥時代2",
+      description: "大化の改新、白村江の戦い、天智天皇と天武天皇の時代までを人物と制度で整理するアプリです。",
+      meta: [
+        "範囲: 飛鳥時代2",
+        "中心: 大化の改新 / 白村江 / 律令国家の始まり",
+        "こつ: 人物とできごとをセットで覚える"
+      ],
+      summaryPoints: [
+        { title: "大化の改新", body: "645年、中大兄皇子と中臣鎌足が蘇我氏をたおし、天皇中心の政治をめざす改革を始めました。" },
+        { title: "改革の内容", body: "公地公民、全国を国・郡・里に分けること、戸籍をつくること、班田収授法などが重要です。" },
+        { title: "白村江の戦い", body: "663年、日本は朝鮮半島の戦いで敗れ、防人や大宰府を置いて九州北部の守りを固めました。" },
+        { title: "都と律令国家", body: "天智天皇のあと、天武天皇・持統天皇の時代に藤原京がつくられ、大宝律令へつながっていきます。" }
+      ],
+      timeline: [
+        { year: "645年", event: "大化の改新が始まる" },
+        { year: "663年", event: "白村江の戦いで日本が敗れる" },
+        { year: "672年", event: "壬申の乱がおこる" },
+        { year: "694年", event: "藤原京に都を移す" },
+        { year: "701年", event: "大宝律令ができる" }
+      ],
+      terms: [
+        { word: "公地公民", meaning: "豪族の土地や人々を国家のものとする考え方。" },
+        { word: "戸籍", meaning: "人々に田を割り当てるもとになる記録。" },
+        { word: "班田収授法", meaning: "人々に口分田を与える制度。" },
+        { word: "防人", meaning: "九州の守りについた兵士。" }
+      ],
+      flashcards: [
+        { front: "大化の改新を始めた人物は？", back: "中大兄皇子と中臣鎌足。" },
+        { front: "公地公民とは？", back: "豪族が持っていた土地や人々を国家のものとする考え方。" },
+        { front: "663年の戦いは？", back: "白村江の戦い。日本は敗れた。" },
+        { front: "白村江の戦いのあと、九州北部に置かれたものは？", back: "防人や大宰府。" },
+        { front: "694年にできた都は？", back: "藤原京。" },
+        { front: "701年にできた法令は？", back: "大宝律令。" },
+        { front: "戸籍を作った理由は？", back: "人々に田を分けたり、税を決めたりするため。" },
+        { front: "班田収授法とは？", back: "人々に口分田を与える制度。" },
+        { front: "672年の争いは？", back: "壬申の乱。" },
+        { front: "藤原京はどんな都？", back: "日本で初めて本格的に整えられた都。" },
+        { front: "防人とは？", back: "九州の守りについた兵士。" },
+        { front: "大宰府とは？", back: "九州地方を治め、外国への備えもした役所。" },
+        { front: "645年のできごとは？", back: "大化の改新が始まった。" },
+        { front: "白村江の戦いの相手は？", back: "唐・新羅の連合軍。" },
+        { front: "公地公民のねらいは？", back: "天皇中心の国づくりを進めること。" },
+        { front: "口分田とは？", back: "班田収授法で人々に分け与えられた田。" },
+        { front: "694年の都づくりを進めた天皇は？", back: "持統天皇。" },
+        { front: "壬申の乱のあとに天皇になったのは？", back: "天武天皇。" },
+        { front: "大宝律令は何のため？", back: "律令国家づくりを進めるため。" },
+        { front: "中大兄皇子はのちのだれ？", back: "天智天皇。" },
+        { front: "中臣鎌足はのちに何という名をもらった？", back: "藤原鎌足。" },
+        { front: "白村江の戦いのあと、なぜ守りを固めた？", back: "外国から攻められるおそれがあったから。" },
+        { front: "飛鳥時代後半の学習のこつは？", back: "人物・年号・制度をセットで覚えること。" }
+      ],
+      quiz: [
+        {
+          question: "大化の改新を始めた中心人物の組み合わせはどれ？",
+          choices: ["聖徳太子と推古天皇", "中大兄皇子と中臣鎌足", "天智天皇と天武天皇", "蘇我馬子と蘇我入鹿"],
+          answerIndex: 1,
+          explanation: "645年に中大兄皇子と中臣鎌足が改革を始めました。"
+        },
+        {
+          question: "『公地公民』の説明として正しいものはどれ？",
+          choices: ["人々が自由に土地を売れること", "国が土地や人々を治める考え方", "税をなくすこと", "都を移すこと"],
+          answerIndex: 1,
+          explanation: "豪族の土地や人々を国家のものとする考え方です。"
+        },
+        {
+          question: "白村江の戦いで日本が敗れたのは何年？",
+          choices: ["603年", "645年", "663年", "701年"],
+          answerIndex: 2,
+          explanation: "663年です。戦いのあと、九州北部の守りを固めました。"
+        },
+        {
+          question: "白村江の戦いのあとに置かれたものとして正しいのはどれ？",
+          choices: ["遣唐使", "防人", "関所", "幕府"],
+          answerIndex: 1,
+          explanation: "防人や大宰府を置いて守りを固めました。"
+        },
+        {
+          question: "694年に都が移された場所はどこ？",
+          choices: ["平城京", "難波京", "藤原京", "平安京"],
+          answerIndex: 2,
+          explanation: "持統天皇の時代に藤原京がつくられました。"
+        },
+        {
+          question: "701年にできたものはどれ？",
+          choices: ["十七条の憲法", "冠位十二階", "大宝律令", "墾田永年私財法"],
+          answerIndex: 2,
+          explanation: "律令国家づくりを進める大事な法令です。"
+        },
+        {
+          question: "戸籍を作った目的として正しいものはどれ？",
+          choices: ["海を広げるため", "税や田を公平に決めるため", "寺をこわすため", "外国へ移住するため"],
+          answerIndex: 1,
+          explanation: "人々に田を与えたり、税を決めたりするために戸籍を作りました。"
+        },
+        {
+          question: "班田収授法の説明として正しいものはどれ？",
+          choices: ["兵士を選ぶ制度", "人々に口分田を与える制度", "都を移す制度", "仏教を広める制度"],
+          answerIndex: 1,
+          explanation: "戸籍をもとに人々へ田を分け与える制度です。"
+        },
+        {
+          question: "672年に起こったできごとはどれ？",
+          choices: ["白村江の戦い", "壬申の乱", "承久の乱", "応仁の乱"],
+          answerIndex: 1,
+          explanation: "672年は壬申の乱です。"
+        },
+        {
+          question: "藤原京について正しいものはどれ？",
+          choices: ["北海道に作られた", "日本初の本格的な都とされる", "海の上に作られた", "江戸時代の都である"],
+          answerIndex: 1,
+          explanation: "694年に都が移され、日本初の本格的な都とされています。"
+        },
+        {
+          question: "防人の役目として正しいものはどれ？",
+          choices: ["都で政治をする", "九州の守りにつく", "米を作る", "寺を建てる"],
+          answerIndex: 1,
+          explanation: "白村江の戦いのあと、九州北部の守りにつきました。"
+        },
+        {
+          question: "大宰府が置かれた理由として近いものはどれ？",
+          choices: ["北海道を開くため", "九州を治め、外国に備えるため", "東北の税を集めるため", "港をなくすため"],
+          answerIndex: 1,
+          explanation: "九州地方を治めながら、外国への備えもしました。"
+        },
+        {
+          question: "大化の改新から大宝律令へつながる流れとして正しいのはどれ？",
+          choices: ["天皇中心の国づくりを進めた", "武士の政治が始まった", "外国との交流をやめた", "土地を完全に個人のものにした"],
+          answerIndex: 0,
+          explanation: "改革を進めて、律令国家づくりへつながっていきました。"
+        },
+        {
+          question: "645年に始まった改革はどれ？",
+          choices: ["大宝律令", "大化の改新", "冠位十二階", "墾田永年私財法"],
+          answerIndex: 1,
+          explanation: "645年は大化の改新です。"
+        },
+        {
+          question: "白村江の戦いで日本が戦った相手として正しいものはどれ？",
+          choices: ["唐・新羅", "元", "モンゴル", "オランダ"],
+          answerIndex: 0,
+          explanation: "唐と新羅の連合軍に敗れました。"
+        },
+        {
+          question: "口分田について正しいものはどれ？",
+          choices: ["自由に売れる土地", "人々に分けられた田", "山の名前", "寺の土地"],
+          answerIndex: 1,
+          explanation: "班田収授法で人々に与えられた田です。"
+        },
+        {
+          question: "694年に藤原京へ都を移した天皇はだれ？",
+          choices: ["推古天皇", "持統天皇", "聖武天皇", "後醍醐天皇"],
+          answerIndex: 1,
+          explanation: "持統天皇の時代です。"
+        },
+        {
+          question: "壬申の乱のあとに天皇になった人物はだれ？",
+          choices: ["天武天皇", "天智天皇", "天皇ではない", "聖徳太子"],
+          answerIndex: 0,
+          explanation: "壬申の乱のあと、天武天皇が即位しました。"
+        },
+        {
+          question: "大宝律令の目的としていちばん近いものはどれ？",
+          choices: ["寺をなくすため", "律令国家づくりを進めるため", "海を広げるため", "税をなくすため"],
+          answerIndex: 1,
+          explanation: "国のしくみを整えて律令国家づくりを進めました。"
+        },
+        {
+          question: "中大兄皇子はのちに何とよばれる？",
+          choices: ["天武天皇", "天智天皇", "持統天皇", "藤原不比等"],
+          answerIndex: 1,
+          explanation: "中大兄皇子はのちの天智天皇です。"
+        },
+        {
+          question: "中臣鎌足がのちにもらった名はどれ？",
+          choices: ["藤原鎌足", "藤原道長", "源頼朝", "中大兄鎌足"],
+          answerIndex: 0,
+          explanation: "中臣鎌足は藤原姓を与えられ、藤原鎌足となりました。"
+        },
+        {
+          question: "白村江の戦いのあと、防人や大宰府を置いた理由はどれ？",
+          choices: ["祭りをするため", "外国からの攻撃に備えるため", "米作りを広めるため", "都を引っこすため"],
+          answerIndex: 1,
+          explanation: "外国に攻められるおそれにそなえて守りを固めました。"
+        },
+        {
+          question: "公地公民と関係が深い考え方はどれ？",
+          choices: ["豪族が好きに治める", "国が土地と人々を治める", "武士が分け合う", "農民が全部決める"],
+          answerIndex: 1,
+          explanation: "国家が土地や人々を治める考え方です。"
+        },
+        {
+          question: "飛鳥時代2の学習で大事な覚え方としてよいものはどれ？",
+          choices: ["人物だけ覚える", "年号だけ覚える", "人物・年号・制度をつなげて覚える", "地図だけ見る"],
+          answerIndex: 2,
+          explanation: "人物・年号・制度のつながりで覚えると整理しやすいです。"
+        }
+      ],
+      checkItems: [
+        { title: "645年・663年・694年・701年を言える", note: "年号とできごとをセットで覚えます。" },
+        { title: "大化の改新の中心人物を言える", note: "中大兄皇子と中臣鎌足です。" },
+        { title: "公地公民・戸籍・班田収授法を説明できる", note: "改革の内容として出やすいです。" },
+        { title: "白村江の戦いのあと何が起こったか言える", note: "防人・大宰府・守りを固めたことを確認します。" }
+      ],
+      footer: "社会は教材画像の『飛鳥時代2』をもとに、人物・年号・制度がつながるように整理しています。"
+    });
+  </script>
+</body>
+</html>

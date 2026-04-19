@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>理科 4-1 テスト対策</title>
+  <link rel="stylesheet" href="study-app.css">
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div class="hero">
+        <span class="eyebrow" id="eyebrow"></span>
+        <div>
+          <h1 id="appTitle"></h1>
+          <p id="appDescription"></p>
+        </div>
+        <div class="hero-meta" id="heroMeta"></div>
+      </div>
+    </header>
+
+    <main>
+      <div class="row" style="margin-top:0;margin-bottom:16px;">
+        <a class="sub" href="index.html">教科一覧にもどる</a>
+      </div>
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="summary">まとめ</button>
+        <button class="tab-btn" data-tab="flash">暗記カード</button>
+        <button class="tab-btn" data-tab="quiz">4択クイズ</button>
+        <button class="tab-btn" data-tab="check">確認</button>
+      </div>
+
+      <section id="summary" class="panel active">
+        <div class="section-grid">
+          <article class="card">
+            <div class="card-head">
+              <h2>テスト範囲の要点</h2>
+              <span class="pill" id="pointCount"></span>
+            </div>
+            <div class="point-list" id="summaryPoints"></div>
+          </article>
+          <article class="card">
+            <div class="card-head">
+              <h2>流れで覚える</h2>
+              <span class="pill">植物</span>
+            </div>
+            <div class="timeline" id="timeline"></div>
+          </article>
+          <article class="card">
+            <div class="card-head">
+              <h2>重要語句</h2>
+              <span class="pill">理科ことば</span>
+            </div>
+            <div class="terms" id="terms"></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="flash" class="panel">
+        <article class="card">
+          <div class="card-head">
+            <div>
+              <h2>暗記カード</h2>
+              <p>例と意味をセットで確認できます。</p>
+            </div>
+            <span class="pill" id="flashCount"></span>
+          </div>
+          <div class="flash-grid" id="flashGrid"></div>
+        </article>
+      </section>
+
+      <section id="quiz" class="panel">
+        <article class="card">
+          <div class="quiz-head">
+            <h2>4択クイズ</h2>
+            <div class="progress" id="progress"></div>
+          </div>
+          <div class="question" id="question"></div>
+          <div class="choices" id="choices"></div>
+          <div class="result" id="result"></div>
+          <div class="row">
+            <button id="nextBtn" class="action" style="display:none;">次の問題</button>
+            <button id="restartBtn" class="sub">もう一回</button>
+          </div>
+        </article>
+      </section>
+
+      <section id="check" class="panel">
+        <article class="card">
+          <div class="card-head">
+            <div>
+              <h2>学習チェック</h2>
+              <p>図を思い出しながら確認できると強いです。</p>
+            </div>
+            <span class="pill completion" id="completionRate"></span>
+          </div>
+          <div class="checklist" id="checklist"></div>
+        </article>
+      </section>
+    </main>
+    <footer id="footerNote"></footer>
+  </div>
+
+  <script src="study-app.js"></script>
+  <script>
+    initStudyApp({
+      storageKey: "rika-4-1",
+      pageTitle: "理科 4-1 植物のふえ方",
+      subject: "理科",
+      unit: "4-1 植物のふえ方",
+      description: "有性生殖・無性生殖・受粉・花粉の運ばれ方を、図のイメージで整理できるアプリです。",
+      meta: [
+        "範囲: 植物のふえ方",
+        "中心: 種子 / 胞子 / 栄養生殖",
+        "こつ: 例と名前を一緒に覚える"
+      ],
+      summaryPoints: [
+        { title: "有性生殖", body: "めしべの中の胚珠に花粉が届き、受精して種子ができるふえ方です。子房は果実になります。" },
+        { title: "無性生殖", body: "親の体の一部から新しい個体ができるふえ方です。受精はありません。" },
+        { title: "胞子でふえる植物", body: "シダ植物やコケ植物は胞子でふえます。種子ではありません。" },
+        { title: "栄養生殖", body: "いも・球根・地下茎・さし木など、植物の体の一部を利用してふえる方法です。" }
+      ],
+      timeline: [
+        { year: "花", event: "花粉がめしべの柱頭につく" },
+        { year: "受精", event: "花粉管がのびて胚珠に達し、受精する" },
+        { year: "成長", event: "胚珠は種子、子房は果実になる" },
+        { year: "別の方法", event: "胞子や栄養生殖でも植物はふえる" }
+      ],
+      terms: [
+        { word: "胚珠", meaning: "受精すると種子になる部分。" },
+        { word: "子房", meaning: "受精後に果実になる部分。" },
+        { word: "胞子", meaning: "種子ではないが、新しい個体のもとになるもの。" },
+        { word: "栄養生殖", meaning: "根・茎・葉などから新しい個体ができる無性生殖。" }
+      ],
+      flashcards: [
+        { front: "有性生殖の例は？", back: "アサガオ、エンドウ、サクラなど。受精して種子ができる。" },
+        { front: "無性生殖の例は？", back: "ジャガイモ、サツマイモ、イチゴ、ユリなど。親の一部からふえる。" },
+        { front: "胞子でふえる植物は？", back: "シダ植物、コケ植物。" },
+        { front: "子房は何になる？", back: "果実になる。" },
+        { front: "胚珠は何になる？", back: "種子になる。" },
+        { front: "イチゴのふえ方は？", back: "ランナーでふえる栄養生殖。" },
+        { front: "ジャガイモのふえ方は？", back: "いもを利用した栄養生殖。" },
+        { front: "花粉がつく場所は？", back: "めしべの柱頭。" },
+        { front: "受精すると子房はどうなる？", back: "果実になる。" },
+        { front: "シダ植物は種子でふえる？", back: "ちがう。胞子でふえる。" },
+        { front: "トウモロコシの花粉の運ばれ方は？", back: "風で運ばれる。" },
+        { front: "アサガオの花粉の運ばれ方は？", back: "こん虫などによって運ばれる。" },
+        { front: "有性生殖で必要なことは？", back: "花粉がめしべにつき、受精すること。" },
+        { front: "無性生殖で受精はある？", back: "ない。親の一部からふえる。" },
+        { front: "サツマイモのふえ方は？", back: "根を利用した栄養生殖。" },
+        { front: "ユリのふえ方は？", back: "球根を利用した栄養生殖。" },
+        { front: "コケ植物は何でふえる？", back: "胞子でふえる。" },
+        { front: "柱頭の役目は？", back: "花粉を受け取る場所。" },
+        { front: "果実のもとになる部分は？", back: "子房。" },
+        { front: "種子のもとになる部分は？", back: "胚珠。" },
+        { front: "風ばい花の例は？", back: "トウモロコシ、イネなど。" },
+        { front: "虫ばい花の例は？", back: "アサガオ、サクラなど。" },
+        { front: "ランナーとは？", back: "地面をはうようにのびる茎で、イチゴなどがふえるのに使う。" }
+      ],
+      quiz: [
+        {
+          question: "受精したあと、胚珠は何になる？",
+          choices: ["花粉", "種子", "果実", "根"],
+          answerIndex: 1,
+          explanation: "胚珠は種子に、子房は果実になります。"
+        },
+        {
+          question: "胞子でふえる植物の組み合わせはどれ？",
+          choices: ["アサガオとサクラ", "イネとトウモロコシ", "シダ植物とコケ植物", "ジャガイモとイチゴ"],
+          answerIndex: 2,
+          explanation: "シダ植物やコケ植物は胞子でふえます。"
+        },
+        {
+          question: "イチゴが地面をはう茎でふえる方法は何？",
+          choices: ["受粉", "栄養生殖", "発芽", "蒸散"],
+          answerIndex: 1,
+          explanation: "ランナーを使う栄養生殖です。"
+        },
+        {
+          question: "有性生殖について正しいのはどれ？",
+          choices: ["受精しない", "親の一部だけでふえる", "種子ができる", "胞子だけでふえる"],
+          answerIndex: 2,
+          explanation: "有性生殖は受精があり、種子ができます。"
+        },
+        {
+          question: "風で花粉が運ばれる植物として合うものはどれ？",
+          choices: ["トウモロコシ", "アサガオ", "サクラ", "ツツジ"],
+          answerIndex: 0,
+          explanation: "トウモロコシは風媒花の例です。"
+        },
+        {
+          question: "子房が果実になる、という説明はどの単元の内容？",
+          choices: ["植物のふえ方", "てこのはたらき", "電流", "天気の変化"],
+          answerIndex: 0,
+          explanation: "花のつくりと植物のふえ方の大事な内容です。"
+        },
+        {
+          question: "無性生殖について正しいものはどれ？",
+          choices: ["受精が必要", "種子だけでふえる", "親のからだの一部からふえる", "花粉が必要"],
+          answerIndex: 2,
+          explanation: "無性生殖は受精しないで、親の体の一部からふえます。"
+        },
+        {
+          question: "花粉がつく場所はどこ？",
+          choices: ["胚珠", "子房", "柱頭", "がく"],
+          answerIndex: 2,
+          explanation: "花粉はめしべの柱頭につきます。"
+        },
+        {
+          question: "ジャガイモのふえ方として正しいのはどれ？",
+          choices: ["胞子", "栄養生殖", "受精なしではふえない", "風で運ばれる"],
+          answerIndex: 1,
+          explanation: "ジャガイモはいもを利用した栄養生殖です。"
+        },
+        {
+          question: "シダ植物について正しいのはどれ？",
+          choices: ["種子でふえる", "胞子でふえる", "必ず花が咲く", "果実ができる"],
+          answerIndex: 1,
+          explanation: "シダ植物は胞子でふえます。"
+        },
+        {
+          question: "有性生殖と無性生殖の大きな違いとして正しいのはどれ？",
+          choices: ["有性生殖は受精がある", "無性生殖は植物ではない", "有性生殖は根だけでふえる", "無性生殖は必ず花を使う"],
+          answerIndex: 0,
+          explanation: "有性生殖には受精があり、無性生殖にはありません。"
+        },
+        {
+          question: "トウモロコシはどのタイプの花か？",
+          choices: ["虫ばい花", "風ばい花", "水ばい花", "胞子花"],
+          answerIndex: 1,
+          explanation: "トウモロコシは風で花粉が運ばれる風ばい花です。"
+        },
+        {
+          question: "受精のあと、種子になる部分はどれ？",
+          choices: ["子房", "柱頭", "胚珠", "おしべ"],
+          answerIndex: 2,
+          explanation: "胚珠が種子になります。"
+        },
+        {
+          question: "子房は受精のあと何になる？",
+          choices: ["花粉", "種子", "果実", "根"],
+          answerIndex: 2,
+          explanation: "子房は果実になります。"
+        },
+        {
+          question: "サツマイモのふえ方として正しいものはどれ？",
+          choices: ["胞子", "種子だけ", "栄養生殖", "風だけ"],
+          answerIndex: 2,
+          explanation: "サツマイモは根を利用した栄養生殖です。"
+        },
+        {
+          question: "ユリのふえ方として正しいものはどれ？",
+          choices: ["球根を使う", "胞子だけ", "花粉を使わないとふえない", "水だけでふえる"],
+          answerIndex: 0,
+          explanation: "ユリは球根を利用した栄養生殖の例です。"
+        },
+        {
+          question: "コケ植物について正しいものはどれ？",
+          choices: ["種子でふえる", "果実が必ずできる", "胞子でふえる", "ランナーでふえる"],
+          answerIndex: 2,
+          explanation: "コケ植物は胞子でふえます。"
+        },
+        {
+          question: "柱頭のはたらきとして正しいものはどれ？",
+          choices: ["種子をつくる", "花粉を受け取る", "根をのばす", "水を送る"],
+          answerIndex: 1,
+          explanation: "柱頭は花粉がつく場所です。"
+        },
+        {
+          question: "風ばい花の例として正しいものはどれ？",
+          choices: ["トウモロコシ", "アサガオ", "サクラ", "ツツジ"],
+          answerIndex: 0,
+          explanation: "トウモロコシは風で花粉が運ばれます。"
+        },
+        {
+          question: "虫ばい花の例として正しいものはどれ？",
+          choices: ["イネ", "トウモロコシ", "アサガオ", "スギ"],
+          answerIndex: 2,
+          explanation: "アサガオは虫などによって花粉が運ばれます。"
+        },
+        {
+          question: "無性生殖の説明として正しいものはどれ？",
+          choices: ["受精して種子ができる", "親と全く関係なくできる", "親のからだの一部からできる", "花がないとできない"],
+          answerIndex: 2,
+          explanation: "親の体の一部から新しい個体ができます。"
+        },
+        {
+          question: "ランナーを使ってふえる植物はどれ？",
+          choices: ["イチゴ", "トウモロコシ", "シダ", "コケ"],
+          answerIndex: 0,
+          explanation: "イチゴは地面をはう茎、ランナーでふえます。"
+        },
+        {
+          question: "有性生殖でできるものはどれ？",
+          choices: ["球根だけ", "種子", "胞子だけ", "ランナーだけ"],
+          answerIndex: 1,
+          explanation: "受精によって種子ができます。"
+        },
+        {
+          question: "ジャガイモとイチゴに共通するふえ方はどれ？",
+          choices: ["胞子", "栄養生殖", "風ばい", "水ばい"],
+          answerIndex: 1,
+          explanation: "どちらも親の体の一部を利用する栄養生殖です。"
+        }
+      ],
+      checkItems: [
+        { title: "有性生殖と無性生殖の違いを言える", note: "受精があるかどうかで区別します。" },
+        { title: "胚珠と子房の変化を説明できる", note: "種子・果実のセットで覚えます。" },
+        { title: "胞子でふえる植物の例を言える", note: "シダ植物、コケ植物を答えられるようにします。" },
+        { title: "栄養生殖の例を2つ以上言える", note: "ジャガイモ、イチゴ、ユリなどを確認します。" }
+      ],
+      footer: "理科は教材画像の『植物のふえ方』ページをもとに、図と用語のつながりが分かるように整理しています。"
+    });
+  </script>
+</body>
+</html>

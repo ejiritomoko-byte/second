@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>算数 4-1 テスト対策</title>
+  <link rel="stylesheet" href="study-app.css">
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div class="hero">
+        <span class="eyebrow" id="eyebrow"></span>
+        <div>
+          <h1 id="appTitle"></h1>
+          <p id="appDescription"></p>
+        </div>
+        <div class="hero-meta" id="heroMeta"></div>
+      </div>
+    </header>
+
+    <main>
+      <div class="row" style="margin-top:0;margin-bottom:16px;">
+        <a class="sub" href="index.html">教科一覧にもどる</a>
+      </div>
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="summary">まとめ</button>
+        <button class="tab-btn" data-tab="flash">暗記カード</button>
+        <button class="tab-btn" data-tab="quiz">4択クイズ</button>
+        <button class="tab-btn" data-tab="check">確認</button>
+      </div>
+
+      <section id="summary" class="panel active">
+        <div class="section-grid">
+          <article class="card">
+            <div class="card-head">
+              <h2>テスト範囲の要点</h2>
+              <span class="pill" id="pointCount"></span>
+            </div>
+            <div class="point-list" id="summaryPoints"></div>
+          </article>
+          <article class="card">
+            <div class="card-head">
+              <h2>計算の流れ</h2>
+              <span class="pill">順番</span>
+            </div>
+            <div class="timeline" id="timeline"></div>
+          </article>
+          <article class="card">
+            <div class="card-head">
+              <h2>重要語句</h2>
+              <span class="pill">算数ことば</span>
+            </div>
+            <div class="terms" id="terms"></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="flash" class="panel">
+        <article class="card">
+          <div class="card-head">
+            <div>
+              <h2>暗記カード</h2>
+              <p>分数と小数の関係を短く確認できます。</p>
+            </div>
+            <span class="pill" id="flashCount"></span>
+          </div>
+          <div class="flash-grid" id="flashGrid"></div>
+        </article>
+      </section>
+
+      <section id="quiz" class="panel">
+        <article class="card">
+          <div class="quiz-head">
+            <h2>4択クイズ</h2>
+            <div class="progress" id="progress"></div>
+          </div>
+          <div class="question" id="question"></div>
+          <div class="choices" id="choices"></div>
+          <div class="result" id="result"></div>
+          <div class="row">
+            <button id="nextBtn" class="action" style="display:none;">次の問題</button>
+            <button id="restartBtn" class="sub">もう一回</button>
+          </div>
+        </article>
+      </section>
+
+      <section id="check" class="panel">
+        <article class="card">
+          <div class="card-head">
+            <div>
+              <h2>学習チェック</h2>
+              <p>できたらチェックを入れて仕上がりを見ます。</p>
+            </div>
+            <span class="pill completion" id="completionRate"></span>
+          </div>
+          <div class="checklist" id="checklist"></div>
+        </article>
+      </section>
+    </main>
+    <footer id="footerNote"></footer>
+  </div>
+
+  <script src="study-app.js"></script>
+  <script>
+    initStudyApp({
+      storageKey: "sansu-4-1",
+      pageTitle: "算数 4-1 数の性質",
+      subject: "算数",
+      unit: "4-1 数の性質",
+      description: "分数と小数の関係、分数を小数に直すこと、整数・小数・分数が混ざった計算をまとめて練習します。",
+      meta: [
+        "範囲: 数の性質",
+        "中心: 分数↔小数 / 混合計算",
+        "こつ: 約分と通分を先に見る"
+      ],
+      summaryPoints: [
+        { title: "分数を小数にする", body: "分子 ÷ 分母 で考えます。割り切れないときは分数のままにすることもあります。" },
+        { title: "小数を分数にする", body: "0.1 は 1/10、0.24 は 24/100 のように位を見て分数にします。できるときは約分します。" },
+        { title: "分数と小数の混合計算", body: "まず同じ形にそろえると計算しやすいです。小数を分数、または分数を小数に直して考えます。" },
+        { title: "計算の前に約分できるか見る", body: "かけ算やわり算では、先に約分すると計算がぐっと楽になります。" }
+      ],
+      timeline: [
+        { year: "1", event: "小数を分数に直す" },
+        { year: "2", event: "分数を小数に直す" },
+        { year: "3", event: "分数と小数が混ざった計算を同じ形にそろえる" },
+        { year: "4", event: "最後に約分や答えの形を見直す" }
+      ],
+      terms: [
+        { word: "約分", meaning: "分子と分母を同じ数で割って、分数を簡単にすること。" },
+        { word: "通分", meaning: "分母を同じ数にそろえること。" },
+        { word: "帯分数", meaning: "整数と分数が合わさった形。例: 1と2/3。" },
+        { word: "仮分数", meaning: "分子が分母以上の分数。例: 5/3。" }
+      ],
+      flashcards: [
+        { front: "0.1 は分数で？", back: "1/10" },
+        { front: "0.24 は分数で？", back: "24/100 = 6/25" },
+        { front: "3/4 は小数で？", back: "0.75" },
+        { front: "1/8 は小数で？", back: "0.125" },
+        { front: "2/5 + 2/15 の分母はどうそろえる？", back: "15 にそろえる。2/5 = 6/15 だから 8/15。" },
+        { front: "2 1/8 ÷ 1 8/10 は？", back: "2 1/8 = 17/8、1 8/10 = 18/10 = 9/5 にして計算する。" },
+        { front: "0.375 は分数で？", back: "375/1000 = 3/8" },
+        { front: "5/8 は小数で？", back: "0.625" },
+        { front: "1/2 ÷ 2 は？", back: "1/2 × 1/2 = 1/4" },
+        { front: "1 3/4 は仮分数で？", back: "7/4" },
+        { front: "0.6 × 2/9 は？", back: "0.6 = 6/10 = 3/5 だから、3/5 × 2/9 = 2/15" },
+        { front: "0.04 は分数で？", back: "4/100 = 1/25" },
+        { front: "0.5 は分数で？", back: "5/10 = 1/2" },
+        { front: "0.75 は分数で？", back: "75/100 = 3/4" },
+        { front: "2/3 を 2 で割ると？", back: "2/3 × 1/2 = 1/3" },
+        { front: "0.2 は分数で？", back: "2/10 = 1/5" },
+        { front: "7/10 は小数で？", back: "0.7" },
+        { front: "1.25 は分数で？", back: "125/100 = 5/4 = 1 1/4" },
+        { front: "4/5 は小数で？", back: "0.8" },
+        { front: "0.3 × 0.5 は分数で考えると？", back: "3/10 × 1/2 = 3/20 = 0.15" },
+        { front: "3/10 ÷ 0.5 は？", back: "0.5 = 1/2 なので、3/10 × 2 = 3/5 = 0.6" },
+        { front: "2.4 を分数にすると？", back: "24/10 = 12/5" },
+        { front: "9/20 は小数で？", back: "0.45" }
+      ],
+      quiz: [
+        {
+          question: "0.24 を分数で表して、いちばん簡単にするとどれ？",
+          choices: ["24/10", "24/100", "6/25", "3/20"],
+          answerIndex: 2,
+          explanation: "0.24 = 24/100 で、4で約分すると 6/25 です。"
+        },
+        {
+          question: "3/8 を小数で表すとどれ？",
+          choices: ["0.375", "0.38", "0.625", "0.75"],
+          answerIndex: 0,
+          explanation: "3 ÷ 8 = 0.375 です。"
+        },
+        {
+          question: "2/5 + 2/15 の答えはどれ？",
+          choices: ["4/20", "8/15", "4/15", "2/3"],
+          answerIndex: 1,
+          explanation: "2/5 を 6/15 に直して、6/15 + 2/15 = 8/15 です。"
+        },
+        {
+          question: "1/2 ÷ 2 の答えはどれ？",
+          choices: ["1", "1/4", "2/1", "4"],
+          answerIndex: 1,
+          explanation: "2で割るのは 1/2 をかけるのと同じなので、1/2 × 1/2 = 1/4 です。"
+        },
+        {
+          question: "1 3/4 を仮分数にするとどれ？",
+          choices: ["4/7", "7/4", "13/4", "5/4"],
+          answerIndex: 1,
+          explanation: "1 = 4/4 なので、4/4 + 3/4 = 7/4 です。"
+        },
+        {
+          question: "分数と小数の混合計算で、最初にするとよいことはどれ？",
+          choices: ["暗算だけで進める", "同じ形にそろえる", "分母を消す", "小数点をなくす"],
+          answerIndex: 1,
+          explanation: "分数と小数をそのまま混ぜず、同じ形にそろえると計算しやすくなります。"
+        },
+        {
+          question: "0.375 を分数で表して、いちばん簡単にするとどれ？",
+          choices: ["375/10", "3/8", "37/5", "15/8"],
+          answerIndex: 1,
+          explanation: "0.375 = 375/1000 で、125で約分すると 3/8 です。"
+        },
+        {
+          question: "5/8 を小数で表すとどれ？",
+          choices: ["0.58", "0.625", "0.8", "1.25"],
+          answerIndex: 1,
+          explanation: "5 ÷ 8 = 0.625 です。"
+        },
+        {
+          question: "0.6 × 2/9 の答えはどれ？",
+          choices: ["2/15", "12/9", "3/5", "4/9"],
+          answerIndex: 0,
+          explanation: "0.6 = 3/5 に直して、3/5 × 2/9 = 6/45 = 2/15 です。"
+        },
+        {
+          question: "0.04 を分数で表して、いちばん簡単にするとどれ？",
+          choices: ["4/10", "4/100", "1/25", "1/4"],
+          answerIndex: 2,
+          explanation: "0.04 = 4/100 で、4で約分すると 1/25 です。"
+        },
+        {
+          question: "2 1/8 ÷ 1 8/10 の計算で、1 8/10 を仮分数に直すとどれ？",
+          choices: ["18/10", "9/5", "Both A and B", "8/10"],
+          answerIndex: 2,
+          explanation: "1 8/10 = 18/10 で、約分して 9/5 にできます。"
+        },
+        {
+          question: "1/8 にあたる小数はどれ？",
+          choices: ["0.18", "0.125", "0.25", "0.0125"],
+          answerIndex: 1,
+          explanation: "1 ÷ 8 = 0.125 です。"
+        },
+        {
+          question: "3/5 を小数に直したものとして正しいのはどれ？",
+          choices: ["0.3", "0.5", "0.6", "0.8"],
+          answerIndex: 2,
+          explanation: "3 ÷ 5 = 0.6 です。"
+        },
+        {
+          question: "0.5 を分数で表して、いちばん簡単にするとどれ？",
+          choices: ["5/100", "5/10", "1/2", "Both B and C"],
+          answerIndex: 3,
+          explanation: "0.5 = 5/10 で、約分すると 1/2 です。"
+        },
+        {
+          question: "0.75 を分数で表して、いちばん簡単にするとどれ？",
+          choices: ["75/10", "3/4", "7/5", "1/4"],
+          answerIndex: 1,
+          explanation: "0.75 = 75/100 = 3/4 です。"
+        },
+        {
+          question: "2/3 ÷ 2 の答えはどれ？",
+          choices: ["4/3", "1/3", "2/5", "2/1"],
+          answerIndex: 1,
+          explanation: "2で割るので 1/2 をかけます。2/3 × 1/2 = 1/3 です。"
+        },
+        {
+          question: "0.2 を分数にしたものとして正しいのはどれ？",
+          choices: ["2/100", "1/2", "1/5", "2/5"],
+          answerIndex: 2,
+          explanation: "0.2 = 2/10 = 1/5 です。"
+        },
+        {
+          question: "7/10 を小数にするとどれ？",
+          choices: ["0.07", "0.7", "7.0", "1.7"],
+          answerIndex: 1,
+          explanation: "10分の7なので 0.7 です。"
+        },
+        {
+          question: "1.25 を分数で表して、いちばん簡単にするとどれ？",
+          choices: ["125/10", "5/4", "1/25", "25/4"],
+          answerIndex: 1,
+          explanation: "1.25 = 125/100 = 5/4 です。"
+        },
+        {
+          question: "4/5 を小数で表すとどれ？",
+          choices: ["0.4", "0.45", "0.8", "1.25"],
+          answerIndex: 2,
+          explanation: "4 ÷ 5 = 0.8 です。"
+        },
+        {
+          question: "0.3 × 0.5 の答えはどれ？",
+          choices: ["0.15", "0.8", "0.35", "1.5"],
+          answerIndex: 0,
+          explanation: "3/10 × 1/2 = 3/20 = 0.15 です。"
+        },
+        {
+          question: "3/10 ÷ 0.5 の答えはどれ？",
+          choices: ["0.15", "0.3", "0.6", "1.5"],
+          answerIndex: 2,
+          explanation: "0.5 = 1/2 なので、3/10 × 2 = 6/10 = 0.6 です。"
+        },
+        {
+          question: "2.4 を分数で表したものとして正しいのはどれ？",
+          choices: ["24/10", "12/5", "Both A and B", "24/100"],
+          answerIndex: 2,
+          explanation: "2.4 = 24/10 で、約分すると 12/5 です。"
+        },
+        {
+          question: "9/20 を小数にするとどれ？",
+          choices: ["0.9", "0.45", "0.29", "0.25"],
+          answerIndex: 1,
+          explanation: "9 ÷ 20 = 0.45 です。"
+        }
+      ],
+      checkItems: [
+        { title: "分数を小数に直せる", note: "わり算にして考えられるようにします。" },
+        { title: "小数を分数に直せる", note: "10分のいくつ、100分のいくつで考えます。" },
+        { title: "帯分数を仮分数に直せる", note: "整数部分を分母に合わせて直します。" },
+        { title: "まちがえた問題を式つきで解き直した", note: "計算の順番まで確認できると安心です。" }
+      ],
+      footer: "算数は画像の『数の性質』ページをもとに、分数と小数の変換・混合計算の復習向けにまとめています。"
+    });
+  </script>
+</body>
+</html>
