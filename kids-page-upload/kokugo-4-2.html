@@ -1,108 +1,24 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>国語 4-2 テスト対策</title>
+  <title>国語 4-2 熟語の意味・組み立て</title>
   <link rel="stylesheet" href="study-app.css">
 </head>
 <body>
   <div class="shell">
-    <header>
-      <div class="hero">
-        <span class="eyebrow" id="eyebrow"></span>
-        <div>
-          <h1 id="appTitle"></h1>
-          <p id="appDescription"></p>
-        </div>
-        <div class="hero-meta" id="heroMeta"></div>
-      </div>
-    </header>
-
+    <header><div class="hero"><span class="eyebrow" id="eyebrow"></span><div><h1 id="appTitle"></h1><p id="appDescription"></p></div><div class="hero-meta" id="heroMeta"></div></div></header>
     <main>
-      <div class="row" style="margin-top:0;margin-bottom:16px;">
-        <a class="sub" href="index.html">教科一覧にもどる</a>
-      </div>
-
-      <div class="tabs">
-        <button class="tab-btn active" data-tab="summary">まとめ</button>
-        <button class="tab-btn" data-tab="flash">暗記カード</button>
-        <button class="tab-btn" data-tab="quiz">4択クイズ</button>
-        <button class="tab-btn" data-tab="check">確認</button>
-      </div>
-
-      <section id="summary" class="panel active">
-        <div class="section-grid">
-          <article class="card">
-            <div class="card-head">
-              <h2>テスト範囲の要点</h2>
-              <span class="pill" id="pointCount"></span>
-            </div>
-            <div class="point-list" id="summaryPoints"></div>
-          </article>
-          <article class="card">
-            <div class="card-head">
-              <h2>熟語の見分け方</h2>
-              <span class="pill">組み立て</span>
-            </div>
-            <div class="timeline" id="timeline"></div>
-          </article>
-          <article class="card">
-            <div class="card-head">
-              <h2>重要語句</h2>
-              <span class="pill">国語ことば</span>
-            </div>
-            <div class="terms" id="terms"></div>
-          </article>
-        </div>
-      </section>
-
-      <section id="flash" class="panel">
-        <article class="card">
-          <div class="card-head">
-            <div>
-              <h2>暗記カード</h2>
-              <p>熟語の意味と組み立てを短く確認できます。</p>
-            </div>
-            <span class="pill" id="flashCount"></span>
-          </div>
-          <div class="flash-grid" id="flashGrid"></div>
-        </article>
-      </section>
-
-      <section id="quiz" class="panel">
-        <article class="card">
-          <div class="quiz-head">
-            <h2>4択クイズ</h2>
-            <div class="progress" id="progress"></div>
-          </div>
-          <div class="question" id="question"></div>
-          <div class="choices" id="choices"></div>
-          <div class="result" id="result"></div>
-          <div class="row">
-            <button id="nextBtn" class="action" style="display:none;">次の問題</button>
-            <button id="restartBtn" class="sub">もう一回</button>
-          </div>
-        </article>
-      </section>
-
-      <section id="check" class="panel">
-        <article class="card">
-          <div class="card-head">
-            <div>
-              <h2>学習チェック</h2>
-              <p>意味と組み立てを両方で見分けられるか確認します。</p>
-            </div>
-            <span class="pill completion" id="completionRate"></span>
-          </div>
-          <div class="checklist" id="checklist"></div>
-        </article>
-      </section>
+      <div class="row" style="margin-top:0;margin-bottom:16px;"><a class="sub" href="index.html">トップページにもどる</a></div>
+      <div class="tabs"><button class="tab-btn active" data-tab="summary">まとめ</button><button class="tab-btn" data-tab="flash">暗記カード</button><button class="tab-btn" data-tab="quiz">4択クイズ</button><button class="tab-btn" data-tab="check">確認</button></div>
+      <section id="summary" class="panel active"><div class="section-grid"><article class="card"><div class="card-head"><h2>テストによく出るポイント</h2><span class="pill" id="pointCount"></span></div><div class="point-list" id="summaryPoints"></div></article><article class="card"><div class="card-head"><h2>学習の流れ</h2><span class="pill">順に確認</span></div><div class="timeline" id="timeline"></div></article><article class="card"><div class="card-head"><h2>重要語句</h2><span class="pill">意味もおぼえる</span></div><div class="terms" id="terms"></div></article></div></section>
+      <section id="flash" class="panel"><article class="card"><div class="card-head"><div><h2>暗記カード</h2><p>タップして表と裏を切りかえながら、熟語の組み立てと意味を覚えよう。</p></div><span class="pill" id="flashCount"></span></div><div class="flash-grid" id="flashGrid"></div></article></section>
+      <section id="quiz" class="panel"><article class="card"><div class="quiz-head"><h2>4択クイズ</h2><div class="progress" id="progress"></div></div><div class="question" id="question"></div><div class="choices" id="choices"></div><div class="result" id="result"></div><div class="row"><button id="nextBtn" class="action" style="display:none;">次の問題へ</button><button id="restartBtn" class="sub">もう一回</button></div></article></section>
+      <section id="check" class="panel"><article class="card"><div class="card-head"><div><h2>学習チェック</h2><p>覚えたところにチェックして、仕上がりを確認しよう。</p></div><span class="pill completion" id="completionRate"></span></div><div class="checklist" id="checklist"></div></article></section>
     </main>
-
     <footer id="footerNote"></footer>
   </div>
-
   <script src="study-app.js"></script>
   <script>
     initStudyApp({
@@ -110,126 +26,80 @@
       pageTitle: "国語 4-2 熟語の意味・組み立て",
       subject: "国語",
       unit: "4-2 熟語の意味・組み立て",
-      description: "熟語がどんな意味のつながりでできているかを整理して、見分けられるようにするアプリです。",
-      meta: [
-        "範囲: 熟語の意味 / 熟語の組み立て",
-        "中心: 似た意味・反対・修飾・目的語・主語述語",
-        "こつ: 2つの漢字の関係を言葉で説明する"
-      ],
+      description: "熟語の組み立てを見分けて、意味までしっかり説明できるようにする学習アプリです。",
+      meta: ["範囲: 熟語の意味 / 熟語の組み立て", "中心: 似た意味・反対の意味・目的語・修飾", "コツ: 2つの漢字の関係を言葉で言い直す"],
       summaryPoints: [
-        { title: "似た意味の漢字の組み合わせ", body: "海洋・道路のように、似た意味の漢字を重ねてできている熟語があります。" },
-        { title: "反対の意味の漢字の組み合わせ", body: "上下・左右・大小のように、反対の意味を合わせた熟語があります。" },
-        { title: "上の字が下の字をくわしくする", body: "青空・白線のように、上の字が下の字をくわしく説明する熟語があります。" },
-        { title: "下の字が上の字の目的語になる", body: "読書・登山のように、『何をするか』の関係でできている熟語があります。" },
-        { title: "主語と述語の関係", body: "雪国・積雪のように、『何がどうする』の関係になっている熟語もあります。" }
+        { title: "似た意味の組み立て", body: "同じような意味の漢字を重ねた熟語です。意味が近い漢字どうしを見つけます。" },
+        { title: "反対の意味の組み立て", body: "反対の意味の漢字を組み合わせた熟語です。左右、上下、前後などが例です。" },
+        { title: "上の字が下の字をくわしくする", body: "どんな様子かを上の字が説明している熟語です。強風、雪国、早朝などがあります。" },
+        { title: "下の字が上の字の目的語になる", body: "何をするのかを考えると分かります。読書は書を読む、開店は店を開くです。" },
+        { title: "熟語は意味までセットで覚える", body: "組み立てだけでなく、実際にどんな意味かを自分の言葉で言えるようにします。" }
       ],
       timeline: [
-        { year: "1", event: "2つの漢字の意味をそれぞれ確認する" },
-        { year: "2", event: "似た意味か、反対か、説明する関係かを考える" },
-        { year: "3", event: "文に直して『どんな関係か』を言ってみる" },
-        { year: "4", event: "同じ種類の熟語をまとめて覚える" }
+        { year: "1", event: "2つの漢字の意味をたしかめる" },
+        { year: "2", event: "どんな関係かを、似た意味・反対・修飾・目的語で考える" },
+        { year: "3", event: "熟語の意味を短い文で言い直す" },
+        { year: "4", event: "クイズで同じ形の熟語をまとめて見分ける" }
       ],
       terms: [
-        { word: "修飾", meaning: "ある言葉が、ほかの言葉をくわしく説明すること。" },
-        { word: "目的語", meaning: "動作の対象になる言葉。『何を〜する』の『何を』にあたる。" },
-        { word: "主語", meaning: "『何が』にあたる言葉。" },
-        { word: "述語", meaning: "『どうする』『どんなだ』を表す言葉。" }
+        { word: "似た意味", meaning: "同じような意味の漢字どうしを組み合わせた熟語。" },
+        { word: "反対の意味", meaning: "反対の意味をもつ漢字どうしの熟語。" },
+        { word: "修飾", meaning: "上の字が下の字の様子をくわしく説明する関係。" },
+        { word: "目的語", meaning: "下の字が上の字の相手になる関係。" }
       ],
       flashcards: [
-        { front: "海洋", back: "似た意味の漢字の組み合わせ。" },
-        { front: "道路", back: "似た意味の漢字の組み合わせ。" },
-        { front: "上下", back: "反対の意味の漢字の組み合わせ。" },
-        { front: "左右", back: "反対の意味の漢字の組み合わせ。" },
-        { front: "青空", back: "上の字が下の字をくわしくする熟語。" },
-        { front: "白線", back: "上の字が下の字をくわしくする熟語。" },
-        { front: "読書", back: "下の字が上の字の目的語になる熟語。" },
-        { front: "登山", back: "下の字が上の字の目的語になる熟語。" },
-        { front: "積雪", back: "主語と述語の関係。雪が積もる。" },
-        { front: "雪国", back: "主語と述語の関係で覚えることが多い。雪の国。" },
-        { front: "国旗", back: "『国の旗』。上の字が下の字を説明する。" },
-        { front: "火山灰", back: "『火山から出た灰』。説明の関係。" }
+        { front: "強風", back: "強い風。上の字が下の字をくわしくする熟語。" },
+        { front: "雪国", back: "雪の多い国。上の字が下の字をくわしくする熟語。" },
+        { front: "読書", back: "書を読むこと。下の字が上の字の目的語になる熟語。" },
+        { front: "開店", back: "店を開くこと。下の字が上の字の目的語になる熟語。" },
+        { front: "森林", back: "森と林で、似た意味の漢字を重ねた熟語。" },
+        { front: "道路", back: "道と路で、似た意味の漢字を重ねた熟語。" },
+        { front: "左右", back: "左と右で、反対の意味の漢字を組み合わせた熟語。" },
+        { front: "上下", back: "上と下で、反対の意味の漢字を組み合わせた熟語。" },
+        { front: "前後", back: "前と後ろで、反対の意味の漢字を組み合わせた熟語。" },
+        { front: "着席", back: "席に着くこと。下の字が上の字の目的語になる熟語。" },
+        { front: "日記", back: "日を記すこと。下の字が上の字の目的語になる熟語。" },
+        { front: "早朝", back: "早い朝。上の字が下の字をくわしくする熟語。" },
+        { front: "白線", back: "白い線。上の字が下の字をくわしくする熟語。" },
+        { front: "高台", back: "高い台地や高い場所。上の字が下の字をくわしくする熟語。" },
+        { front: "売買", back: "売ることと買うこと。反対の意味の熟語。" },
+        { front: "多少", back: "多いことと少ないこと。反対の意味の熟語。" },
+        { front: "明暗", back: "明るいことと暗いこと。反対の意味の熟語。" },
+        { front: "草原", back: "草の生えた原。上の字が下の字をくわしくする熟語。" },
+        { front: "乗車", back: "車に乗ること。下の字が上の字の目的語になる熟語。" },
+        { front: "洗顔", back: "顔を洗うこと。下の字が上の字の目的語になる熟語。" },
+        { front: "岩石", back: "岩と石で、似た意味の熟語。" },
+        { front: "音声", back: "音と声で、似た意味の熟語。" }
       ],
       quiz: [
-        {
-          question: "『上下』はどんな組み立ての熟語？",
-          choices: ["似た意味", "反対の意味", "目的語の関係", "主語と述語"],
-          answerIndex: 1,
-          explanation: "上と下は反対の意味です。"
-        },
-        {
-          question: "『海洋』はどんな組み立ての熟語？",
-          choices: ["似た意味", "反対の意味", "修飾の関係", "目的語の関係"],
-          answerIndex: 0,
-          explanation: "海と洋はどちらも広い海に関係する、似た意味の漢字です。"
-        },
-        {
-          question: "『青空』の関係として正しいものはどれ？",
-          choices: ["空が青い", "青と空が反対", "青が空をくわしくする", "青が空を読む"],
-          answerIndex: 2,
-          explanation: "上の字の『青』が、下の字の『空』を説明しています。"
-        },
-        {
-          question: "『読書』を文にするとどれ？",
-          choices: ["書が読む", "書を読む", "読む書", "書の読み"],
-          answerIndex: 1,
-          explanation: "『何をするか』で考えると『書を読む』です。"
-        },
-        {
-          question: "『積雪』にいちばん近い説明はどれ？",
-          choices: ["雪を積む", "雪が積もる", "積んだ雪山", "雪の上"],
-          answerIndex: 1,
-          explanation: "主語と述語で考えると『雪が積もる』です。"
-        },
-        {
-          question: "『左右』と同じ仲間の熟語はどれ？",
-          choices: ["海洋", "読書", "前後", "白線"],
-          answerIndex: 2,
-          explanation: "前後も反対の意味の漢字の組み合わせです。"
-        },
-        {
-          question: "『国旗』の説明として正しいものはどれ？",
-          choices: ["旗が国を立てる", "国の旗", "国と旗が反対", "旗の国"],
-          answerIndex: 1,
-          explanation: "上の字が下の字を説明して『国の旗』となります。"
-        },
-        {
-          question: "『登山』と同じ組み立てなのはどれ？",
-          choices: ["白線", "道路", "読書", "左右"],
-          answerIndex: 2,
-          explanation: "どちらも『何をするか』で考える熟語です。"
-        },
-        {
-          question: "『白線』はどんな熟語？",
-          choices: ["反対の意味", "似た意味", "上の字が下の字を説明する", "主語と述語"],
-          answerIndex: 2,
-          explanation: "白い線、つまり上の字が下の字を説明しています。"
-        },
-        {
-          question: "『火山灰』の関係に近いものはどれ？",
-          choices: ["山を登る", "火山から出た灰", "灰が火山をつくる", "火と灰が反対"],
-          answerIndex: 1,
-          explanation: "『どんな灰か』を説明している熟語です。"
-        },
-        {
-          question: "『道路』に近い組み立てなのはどれ？",
-          choices: ["海洋", "読書", "青空", "積雪"],
-          answerIndex: 0,
-          explanation: "どちらも似た意味の漢字を重ねた熟語です。"
-        },
-        {
-          question: "熟語の組み立てを考えるとき、最初にするとよいことはどれ？",
-          choices: ["音読だけする", "2つの漢字の意味を確かめる", "書き順だけ見る", "長さをくらべる"],
-          answerIndex: 1,
-          explanation: "まずそれぞれの漢字の意味を確認すると、関係が見えてきます。"
-        }
+        { question: "「読書」はどんな組み立ての熟語ですか。", choices: ["似た意味", "反対の意味", "上が下をくわしくする", "目的語の関係"], answerIndex: 3, explanation: "書を読む、の形なので目的語の関係です。" },
+        { question: "「森林」はどんな組み立ての熟語ですか。", choices: ["似た意味", "反対の意味", "目的語の関係", "主語と述語"], answerIndex: 0, explanation: "森と林は似た意味の漢字です。" },
+        { question: "「左右」はどんな組み立ての熟語ですか。", choices: ["似た意味", "反対の意味", "修飾", "目的語の関係"], answerIndex: 1, explanation: "左と右は反対の意味です。" },
+        { question: "「強風」の意味として正しいものはどれですか。", choices: ["風を強くすること", "強い風", "風の反対", "風を読むこと"], answerIndex: 1, explanation: "強風は強い風です。" },
+        { question: "「雪国」はどんな組み立ての熟語ですか。", choices: ["上が下をくわしくする", "似た意味", "反対の意味", "目的語の関係"], answerIndex: 0, explanation: "どんな国かを「雪」がくわしくしています。" },
+        { question: "「開店」はどんな組み立ての熟語ですか。", choices: ["似た意味", "目的語の関係", "反対の意味", "主語と述語"], answerIndex: 1, explanation: "店を開く、の形です。" },
+        { question: "「前後」はどんな組み立ての熟語ですか。", choices: ["反対の意味", "似た意味", "修飾", "目的語の関係"], answerIndex: 0, explanation: "前と後ろで反対の意味です。" },
+        { question: "「白線」はどんな組み立ての熟語ですか。", choices: ["似た意味", "上が下をくわしくする", "目的語の関係", "反対の意味"], answerIndex: 1, explanation: "白い線、の意味です。" },
+        { question: "「乗車」の意味として正しいものはどれですか。", choices: ["車を乗せること", "車に乗ること", "車が走ること", "車を洗うこと"], answerIndex: 1, explanation: "車に乗ることです。" },
+        { question: "「売買」はどんな組み立ての熟語ですか。", choices: ["修飾", "反対の意味", "似た意味", "目的語の関係"], answerIndex: 1, explanation: "売ると買うは反対の意味です。" },
+        { question: "「道路」にいちばん近い組み立てはどれですか。", choices: ["日記", "森林", "左右", "白線"], answerIndex: 1, explanation: "道路も森林も似た意味の漢字を重ねた熟語です。" },
+        { question: "「着席」の意味として正しいものはどれですか。", choices: ["席を立つこと", "席に着くこと", "席を広げること", "席を数えること"], answerIndex: 1, explanation: "着席は席に着くことです。" },
+        { question: "「多少」はどんな組み立ての熟語ですか。", choices: ["目的語の関係", "反対の意味", "似た意味", "修飾"], answerIndex: 1, explanation: "多いと少ないは反対です。" },
+        { question: "「早朝」はどんな意味ですか。", choices: ["早く走ること", "朝を早くすること", "早い朝", "朝と夜"], answerIndex: 2, explanation: "早朝は早い朝です。" },
+        { question: "「洗顔」はどんな組み立ての熟語ですか。", choices: ["反対の意味", "似た意味", "目的語の関係", "修飾"], answerIndex: 2, explanation: "顔を洗う、の形です。" },
+        { question: "「岩石」はどんな組み立ての熟語ですか。", choices: ["似た意味", "反対の意味", "目的語の関係", "主語と述語"], answerIndex: 0, explanation: "岩と石は似た意味です。" },
+        { question: "「高台」はどんな組み立ての熟語ですか。", choices: ["上が下をくわしくする", "似た意味", "反対の意味", "目的語の関係"], answerIndex: 0, explanation: "高い台を表します。" },
+        { question: "「上下」に近い熟語はどれですか。", choices: ["音声", "売買", "左右", "開店"], answerIndex: 2, explanation: "どちらも反対の意味の熟語です。" },
+        { question: "「日記」はどんな意味ですか。", choices: ["日を記すこと", "日を読むこと", "日を暗くすること", "日を数えること"], answerIndex: 0, explanation: "日記は日を記すことです。" },
+        { question: "「音声」はどんな組み立ての熟語ですか。", choices: ["反対の意味", "似た意味", "修飾", "目的語の関係"], answerIndex: 1, explanation: "音と声は似た意味です。" }
       ],
       checkItems: [
-        { title: "熟語を見て、意味の関係を言える", note: "似た意味・反対・修飾などに分けられるようにします。" },
-        { title: "熟語を文に直して説明できる", note: "『何をする』『何がどうする』の形で言ってみます。" },
-        { title: "まぎらわしい熟語を比べて見分けられる", note: "読書と青空のように、種類のちがいを確認します。" },
-        { title: "ノートにも書いて復習した", note: "意味を書いておくと定着しやすいです。" }
+        { title: "熟語の組み立てを4種類に分けられる", note: "似た意味・反対の意味・修飾・目的語で見分ける。" },
+        { title: "熟語の意味を短い文で説明できる", note: "読書=書を読む、雪国=雪の多い国のように言える。" },
+        { title: "同じ組み立ての熟語を仲間分けできる", note: "例を見て同じ形を選べるようにする。" },
+        { title: "まちがえた熟語をくり返し練習した", note: "暗記カードを使って苦手を減らす。" }
       ],
-      footer: "国語 4-2 は、添付画像をもとに『熟語の意味・組み立て』を中心に整理しています。"
+      footer: "国語 4-2 は、熟語の組み立てと意味をセットで確認して、説明できるようにするのがポイントです。"
     });
   </script>
 </body>
