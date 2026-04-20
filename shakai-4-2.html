@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>社会 4-2 テスト対策</title>
+  <link rel="stylesheet" href="study-app.css">
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div class="hero">
+        <span class="eyebrow" id="eyebrow"></span>
+        <div>
+          <h1 id="appTitle"></h1>
+          <p id="appDescription"></p>
+        </div>
+        <div class="hero-meta" id="heroMeta"></div>
+      </div>
+    </header>
+
+    <main>
+      <div class="row" style="margin-top:0;margin-bottom:16px;">
+        <a class="sub" href="index.html">教科一覧にもどる</a>
+      </div>
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="summary">まとめ</button>
+        <button class="tab-btn" data-tab="flash">暗記カード</button>
+        <button class="tab-btn" data-tab="quiz">4択クイズ</button>
+        <button class="tab-btn" data-tab="check">確認</button>
+      </div>
+
+      <section id="summary" class="panel active">
+        <div class="section-grid">
+          <article class="card">
+            <div class="card-head">
+              <h2>テスト範囲の要点</h2>
+              <span class="pill" id="pointCount"></span>
+            </div>
+            <div class="point-list" id="summaryPoints"></div>
+          </article>
+          <article class="card">
+            <div class="card-head">
+              <h2>流れで整理</h2>
+              <span class="pill">奈良時代</span>
+            </div>
+            <div class="timeline" id="timeline"></div>
+          </article>
+          <article class="card">
+            <div class="card-head">
+              <h2>重要語句</h2>
+              <span class="pill">歴史用語</span>
+            </div>
+            <div class="terms" id="terms"></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="flash" class="panel">
+        <article class="card">
+          <div class="card-head">
+            <div>
+              <h2>暗記カード</h2>
+              <p>奈良時代の人・都・くらし・制度を整理できます。</p>
+            </div>
+            <span class="pill" id="flashCount"></span>
+          </div>
+          <div class="flash-grid" id="flashGrid"></div>
+        </article>
+      </section>
+
+      <section id="quiz" class="panel">
+        <article class="card">
+          <div class="quiz-head">
+            <h2>4択クイズ</h2>
+            <div class="progress" id="progress"></div>
+          </div>
+          <div class="question" id="question"></div>
+          <div class="choices" id="choices"></div>
+          <div class="result" id="result"></div>
+          <div class="row">
+            <button id="nextBtn" class="action" style="display:none;">次の問題</button>
+            <button id="restartBtn" class="sub">もう一回</button>
+          </div>
+        </article>
+      </section>
+
+      <section id="check" class="panel">
+        <article class="card">
+          <div class="card-head">
+            <div>
+              <h2>学習チェック</h2>
+              <p>人物・建物・制度をつなげて説明できるか確認します。</p>
+            </div>
+            <span class="pill completion" id="completionRate"></span>
+          </div>
+          <div class="checklist" id="checklist"></div>
+        </article>
+      </section>
+    </main>
+    <footer id="footerNote"></footer>
+  </div>
+
+  <script src="study-app.js"></script>
+  <script>
+    initStudyApp({
+      storageKey: "shakai-4-2",
+      pageTitle: "社会 4-2 奈良時代",
+      subject: "社会",
+      unit: "4-2 奈良時代",
+      description: "平城京、聖武天皇、東大寺、鑑真、正倉院、奈良の人々のくらしまでをまとめて復習するアプリです。",
+      meta: [
+        "範囲: 奈良時代",
+        "中心: 平城京 / 聖武天皇 / 東大寺 / 正倉院 / 墾田永年私財法",
+        "こつ: 人物・都・建物・くらしをセットで覚える"
+      ],
+      summaryPoints: [
+        { title: "平城京", body: "710年、元明天皇が都を平城京に移しました。唐の都にならってつくられました。" },
+        { title: "奈良の都のくらし", body: "地方の特産物が都に集められ、平城京には市場が開かれました。木簡も使われていました。" },
+        { title: "聖武天皇と東大寺", body: "仏教の力で国を守ろうとし、国ごとに国分寺や国分尼寺をつくらせ、東大寺の大仏もつくらせました。" },
+        { title: "正倉院と鑑真", body: "正倉院には大切な宝物がおさめられています。鑑真は何度も苦労して日本へ来て、仏教を広めました。" },
+        { title: "墾田永年私財法", body: "新しく開いた土地を私有できるようにした法です。これによって土地の私有が進みました。" }
+      ],
+      timeline: [
+        { year: "710年", event: "平城京に都を移す" },
+        { year: "741年", event: "国分寺・国分尼寺をつくらせる" },
+        { year: "743年", event: "墾田永年私財法が出される" },
+        { year: "752年", event: "東大寺の大仏が完成する" },
+        { year: "753年", event: "鑑真が日本に来る" }
+      ],
+      terms: [
+        { word: "木簡", meaning: "文字を書いた細長い木の札。荷物の札などにも使われた。" },
+        { word: "正倉院", meaning: "東大寺の宝物をおさめた倉。" },
+        { word: "国分寺", meaning: "聖武天皇が国ごとにつくらせた寺。" },
+        { word: "墾田永年私財法", meaning: "新しく開いた土地を永久に私有してよいとした法。" }
+      ],
+      flashcards: [
+        { front: "710年の都", back: "平城京。" },
+        { front: "平城京の手本", back: "唐の都。" },
+        { front: "奈良時代の市場", back: "地方の特産物が集まり、にぎわった。" },
+        { front: "木簡", back: "文字を書いた木の札。" },
+        { front: "聖武天皇", back: "仏教の力で国を守ろうとした天皇。" },
+        { front: "国分寺・国分尼寺", back: "国ごとにつくらせた寺。" },
+        { front: "東大寺", back: "奈良にある大きな寺。大仏で有名。" },
+        { front: "正倉院", back: "東大寺の宝物をおさめた倉。" },
+        { front: "鑑真", back: "苦労して日本へ来て、仏教を広めた僧。" },
+        { front: "墾田永年私財法", back: "新しく開いた土地を私有してよいとした法。" },
+        { front: "奈良時代の政治の中心", back: "平城京。" },
+        { front: "大仏をつくらせた天皇", back: "聖武天皇。" }
+      ],
+      quiz: [
+        {
+          question: "710年に都が移された場所はどこ？",
+          choices: ["藤原京", "平城京", "平安京", "難波京"],
+          answerIndex: 1,
+          explanation: "710年に平城京へ都が移されました。"
+        },
+        {
+          question: "平城京は何を手本につくられた？",
+          choices: ["宋の都", "唐の都", "江戸の町", "鎌倉の町"],
+          answerIndex: 1,
+          explanation: "唐の都にならってつくられました。"
+        },
+        {
+          question: "奈良の都に地方の特産物が集まったことがわかる資料はどれ？",
+          choices: ["木簡", "古墳", "土器だけ", "勾玉だけ"],
+          answerIndex: 0,
+          explanation: "木簡から、地方の特産物が都に運ばれたことがわかります。"
+        },
+        {
+          question: "仏教の力で国を守ろうとした天皇はだれ？",
+          choices: ["聖徳太子", "天武天皇", "聖武天皇", "桓武天皇"],
+          answerIndex: 2,
+          explanation: "聖武天皇は仏教を重んじました。"
+        },
+        {
+          question: "国ごとにつくらせた寺を何という？",
+          choices: ["正倉院", "国分寺", "金閣寺", "法隆寺"],
+          answerIndex: 1,
+          explanation: "国ごとに国分寺や国分尼寺をつくらせました。"
+        },
+        {
+          question: "奈良の大仏がある寺はどこ？",
+          choices: ["東大寺", "法隆寺", "薬師寺", "唐招提寺"],
+          answerIndex: 0,
+          explanation: "東大寺に大仏があります。"
+        },
+        {
+          question: "正倉院について正しいものはどれ？",
+          choices: ["市場の名前", "お城の名前", "宝物をおさめた倉", "国の役所"],
+          answerIndex: 2,
+          explanation: "東大寺の宝物をおさめた倉です。"
+        },
+        {
+          question: "鑑真は何をした人？",
+          choices: ["大仏をつくった大工", "何度も苦労して日本へ来た僧", "都を移した天皇", "木簡を書いた商人"],
+          answerIndex: 1,
+          explanation: "鑑真は苦労して日本へ来て、仏教を広めました。"
+        },
+        {
+          question: "743年に出された法はどれ？",
+          choices: ["班田収授法", "墾田永年私財法", "大宝律令", "十七条の憲法"],
+          answerIndex: 1,
+          explanation: "743年に墾田永年私財法が出されました。"
+        },
+        {
+          question: "墾田永年私財法の内容として正しいものはどれ？",
+          choices: ["田をすべて国のものにする", "新しく開いた土地を私有できる", "税をなくす", "寺をこわす"],
+          answerIndex: 1,
+          explanation: "新しく開いた土地を私有してよいとしました。"
+        },
+        {
+          question: "奈良時代の都の人々のくらしとして正しいものはどれ？",
+          choices: ["地方とのつながりがなかった", "市場が開かれた", "米だけしか売られなかった", "文字は使われなかった"],
+          answerIndex: 1,
+          explanation: "平城京では市場が開かれ、にぎわいました。"
+        },
+        {
+          question: "聖武天皇・東大寺・大仏の関係として正しいものはどれ？",
+          choices: ["聖武天皇が大仏をつくらせた", "東大寺が天皇を選んだ", "大仏が市場を開いた", "鑑真が都を移した"],
+          answerIndex: 0,
+          explanation: "聖武天皇は東大寺の大仏をつくらせました。"
+        }
+      ],
+      checkItems: [
+        { title: "710年・741年・743年・752年・753年を言える", note: "できごととセットで覚えます。" },
+        { title: "聖武天皇、鑑真、東大寺、正倉院を説明できる", note: "人・建物・役割をつなげます。" },
+        { title: "平城京のくらしを説明できる", note: "市場、木簡、地方の特産物を確認します。" },
+        { title: "墾田永年私財法の意味を言える", note: "土地の私有が進んだことまで確認します。" }
+      ],
+      footer: "社会 4-2 は、奈良時代の都・人々のくらし・仏教・制度の流れがつかめるようにまとめています。"
+    });
+  </script>
+</body>
+</html>

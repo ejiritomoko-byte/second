@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>理科 4-2 テスト対策</title>
+  <link rel="stylesheet" href="study-app.css">
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div class="hero">
+        <span class="eyebrow" id="eyebrow"></span>
+        <div>
+          <h1 id="appTitle"></h1>
+          <p id="appDescription"></p>
+        </div>
+        <div class="hero-meta" id="heroMeta"></div>
+      </div>
+    </header>
+
+    <main>
+      <div class="row" style="margin-top:0;margin-bottom:16px;">
+        <a class="sub" href="index.html">教科一覧にもどる</a>
+      </div>
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="summary">まとめ</button>
+        <button class="tab-btn" data-tab="flash">暗記カード</button>
+        <button class="tab-btn" data-tab="quiz">4択クイズ</button>
+        <button class="tab-btn" data-tab="check">確認</button>
+      </div>
+
+      <section id="summary" class="panel active">
+        <div class="section-grid">
+          <article class="card">
+            <div class="card-head">
+              <h2>テスト範囲の要点</h2>
+              <span class="pill" id="pointCount"></span>
+            </div>
+            <div class="point-list" id="summaryPoints"></div>
+          </article>
+          <article class="card">
+            <div class="card-head">
+              <h2>流れで整理</h2>
+              <span class="pill">生命のたん生</span>
+            </div>
+            <div class="timeline" id="timeline"></div>
+          </article>
+          <article class="card">
+            <div class="card-head">
+              <h2>重要語句</h2>
+              <span class="pill">理科ことば</span>
+            </div>
+            <div class="terms" id="terms"></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="flash" class="panel">
+        <article class="card">
+          <div class="card-head">
+            <div>
+              <h2>暗記カード</h2>
+              <p>メダカ・ヒト・花のつくりを整理して覚えます。</p>
+            </div>
+            <span class="pill" id="flashCount"></span>
+          </div>
+          <div class="flash-grid" id="flashGrid"></div>
+        </article>
+      </section>
+
+      <section id="quiz" class="panel">
+        <article class="card">
+          <div class="quiz-head">
+            <h2>4択クイズ</h2>
+            <div class="progress" id="progress"></div>
+          </div>
+          <div class="question" id="question"></div>
+          <div class="choices" id="choices"></div>
+          <div class="result" id="result"></div>
+          <div class="row">
+            <button id="nextBtn" class="action" style="display:none;">次の問題</button>
+            <button id="restartBtn" class="sub">もう一回</button>
+          </div>
+        </article>
+      </section>
+
+      <section id="check" class="panel">
+        <article class="card">
+          <div class="card-head">
+            <div>
+              <h2>学習チェック</h2>
+              <p>図を見なくても説明できるかを確認します。</p>
+            </div>
+            <span class="pill completion" id="completionRate"></span>
+          </div>
+          <div class="checklist" id="checklist"></div>
+        </article>
+      </section>
+    </main>
+    <footer id="footerNote"></footer>
+  </div>
+
+  <script src="study-app.js"></script>
+  <script>
+    initStudyApp({
+      storageKey: "rika-4-2",
+      pageTitle: "理科 4-2 生命のたん生",
+      subject: "理科",
+      unit: "4-2 生命のたん生",
+      description: "メダカの育ち方、ヒトのたん生、花のつくり、受粉と受精までをまとめて復習できるアプリです。",
+      meta: [
+        "範囲: メダカ / ヒト / 花のつくり",
+        "中心: 受粉・受精 / 完全花・不完全花 / 両性花・単性花",
+        "こつ: 名前と役目をセットで覚える"
+      ],
+      summaryPoints: [
+        { title: "メダカの育ち方", body: "おすとめすは背びれ・しりびれ・はらのふくらみで見分けます。受精卵は水温25℃くらいで約10日でふ化します。" },
+        { title: "ヒトのたん生", body: "受精卵は子宮の中で育ち、胎ばんとへそのおで母親とつながっています。母親と胎児の血液は混ざりません。" },
+        { title: "花のつくり", body: "花は、めしべ・おしべ・花びら・がくからできています。花粉が柱頭につくことを受粉といいます。" },
+        { title: "受精後の変化", body: "花粉管がのびて受精すると、胚珠は種子に、子房は果実になります。" },
+        { title: "花の分類", body: "4要素がそろった花は完全花、そろっていない花は不完全花です。1つの花におしべとめしべが両方ある花は両性花です。" }
+      ],
+      timeline: [
+        { year: "メダカ", event: "卵ができる → ふ化 → 体が育つ" },
+        { year: "ヒト", event: "受精卵 → 子宮で育つ → 約38週でたん生" },
+        { year: "花", event: "花粉が柱頭につく → 花粉管がのびる → 受精" },
+        { year: "受精後", event: "胚珠が種子、子房が果実になる" }
+      ],
+      terms: [
+        { word: "胎ばん", meaning: "母親から酸素や養分を受け取り、不要物を渡すはたらきをする。" },
+        { word: "へそのお", meaning: "胎児と胎ばんをつなぐ管。" },
+        { word: "完全花", meaning: "めしべ・おしべ・花びら・がくの4つがそろった花。" },
+        { word: "他家受粉", meaning: "同じ種類の別の株の花粉がめしべにつくこと。" }
+      ],
+      flashcards: [
+        { front: "メダカのおすの見分け方", back: "背びれに切れこみがあり、しりびれが平行四辺形に近い。" },
+        { front: "メダカのめすの見分け方", back: "腹がふくらみ、しりびれが三角形に近い。" },
+        { front: "受精卵がふ化するまで", back: "水温25℃くらいで約10日。" },
+        { front: "胎ばんの役目", back: "母親の血液から酸素や養分を受け取り、不要物を出す。" },
+        { front: "へそのおの役目", back: "胎児と胎ばんをつなぐ通り道。" },
+        { front: "花の4要素", back: "めしべ・おしべ・花びら・がく。" },
+        { front: "受粉", back: "花粉が柱頭につくこと。" },
+        { front: "受精", back: "花粉管を通って精細胞と卵細胞が結びつくこと。" },
+        { front: "完全花の例", back: "アブラナ、アサガオ、タンポポなど。" },
+        { front: "不完全花の例", back: "イネ、ススキなど。" },
+        { front: "両性花", back: "1つの花におしべとめしべの両方がある花。" },
+        { front: "単性花", back: "1つの花におしべかめしべのどちらか一方しかない花。" }
+      ],
+      quiz: [
+        {
+          question: "メダカのめすの特徴として正しいものはどれ？",
+          choices: ["腹がふくらんでいる", "背びれに切れこみがある", "しりびれが広い四角形に近い", "必ず体が小さい"],
+          answerIndex: 0,
+          explanation: "めすは腹がふくらみ、しりびれは三角形に近いです。"
+        },
+        {
+          question: "メダカの受精卵がふ化するまでの日数として近いものはどれ？",
+          choices: ["約2日", "約5日", "約10日", "約30日"],
+          answerIndex: 2,
+          explanation: "水温25℃くらいのとき、約10日でふ化します。"
+        },
+        {
+          question: "胎ばんのはたらきとして正しいものはどれ？",
+          choices: ["花粉をつくる", "胎児に酸素や養分をわたす", "卵を水草にくっつける", "花びらを開く"],
+          answerIndex: 1,
+          explanation: "母親の血液中から酸素や養分を受け取ります。"
+        },
+        {
+          question: "母親と胎児の血液について正しいものはどれ？",
+          choices: ["同じ血液が流れる", "完全に混ざる", "混ざらない", "毎日入れかわる"],
+          answerIndex: 2,
+          explanation: "母親と胎児の血液は混ざりません。"
+        },
+        {
+          question: "花粉がつく場所はどこ？",
+          choices: ["子房", "柱頭", "花びら", "がく"],
+          answerIndex: 1,
+          explanation: "花粉はめしべの柱頭につきます。"
+        },
+        {
+          question: "受精したあと、胚珠は何になる？",
+          choices: ["花粉", "果実", "種子", "花びら"],
+          answerIndex: 2,
+          explanation: "胚珠は種子になります。"
+        },
+        {
+          question: "子房は受精後どうなる？",
+          choices: ["種子になる", "果実になる", "柱頭になる", "がくになる"],
+          answerIndex: 1,
+          explanation: "子房は果実になります。"
+        },
+        {
+          question: "完全花の説明として正しいものはどれ？",
+          choices: ["めしべだけある花", "花びらがない花", "4つの要素がそろった花", "花粉をつくらない花"],
+          answerIndex: 2,
+          explanation: "めしべ・おしべ・花びら・がくの4つがそろっています。"
+        },
+        {
+          question: "不完全花の例として正しいものはどれ？",
+          choices: ["アブラナ", "アサガオ", "イネ", "タンポポ"],
+          answerIndex: 2,
+          explanation: "イネやススキは不完全花の例です。"
+        },
+        {
+          question: "両性花とはどんな花？",
+          choices: ["おしべだけある花", "めしべだけある花", "おしべとめしべの両方がある花", "花びらが2枚の花"],
+          answerIndex: 2,
+          explanation: "1つの花に両方がある花です。"
+        },
+        {
+          question: "他家受粉の説明として正しいものはどれ？",
+          choices: ["同じ花の中で受粉する", "同じ株の別の花で受粉する", "別の株の花粉がつく", "花粉がつかないこと"],
+          answerIndex: 2,
+          explanation: "同じ種類の別の株の花粉がめしべにつくことです。"
+        },
+        {
+          question: "『受粉』と『受精』のちがいとして正しいものはどれ？",
+          choices: ["どちらも同じ意味", "受粉は柱頭につくこと、受精は細胞が結びつくこと", "受粉は種子になること", "受精は花びらが開くこと"],
+          answerIndex: 1,
+          explanation: "受粉のあと、花粉管がのびて受精がおこります。"
+        }
+      ],
+      checkItems: [
+        { title: "メダカのおすとめすを見分けられる", note: "背びれ・しりびれ・腹のようすを確認します。" },
+        { title: "胎ばんとへそのおの役目を説明できる", note: "養分・酸素・不要物の流れを言えるようにします。" },
+        { title: "花の4要素と受粉・受精の流れを言える", note: "柱頭・花粉管・胚珠もセットで覚えます。" },
+        { title: "完全花・不完全花・両性花・単性花を見分けられる", note: "例も一緒に答えられると安心です。" }
+      ],
+      footer: "理科 4-2 は、生命のたん生と花のつくりの範囲を1ページで復習できるようにしています。"
+    });
+  </script>
+</body>
+</html>

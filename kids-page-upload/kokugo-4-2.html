@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>国語 4-2 テスト対策</title>
+  <link rel="stylesheet" href="study-app.css">
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div class="hero">
+        <span class="eyebrow" id="eyebrow"></span>
+        <div>
+          <h1 id="appTitle"></h1>
+          <p id="appDescription"></p>
+        </div>
+        <div class="hero-meta" id="heroMeta"></div>
+      </div>
+    </header>
+
+    <main>
+      <div class="row" style="margin-top:0;margin-bottom:16px;">
+        <a class="sub" href="index.html">教科一覧にもどる</a>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="summary">まとめ</button>
+        <button class="tab-btn" data-tab="flash">暗記カード</button>
+        <button class="tab-btn" data-tab="quiz">4択クイズ</button>
+        <button class="tab-btn" data-tab="check">確認</button>
+      </div>
+
+      <section id="summary" class="panel active">
+        <div class="section-grid">
+          <article class="card">
+            <div class="card-head">
+              <h2>テスト範囲の要点</h2>
+              <span class="pill" id="pointCount"></span>
+            </div>
+            <div class="point-list" id="summaryPoints"></div>
+          </article>
+          <article class="card">
+            <div class="card-head">
+              <h2>熟語の見分け方</h2>
+              <span class="pill">組み立て</span>
+            </div>
+            <div class="timeline" id="timeline"></div>
+          </article>
+          <article class="card">
+            <div class="card-head">
+              <h2>重要語句</h2>
+              <span class="pill">国語ことば</span>
+            </div>
+            <div class="terms" id="terms"></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="flash" class="panel">
+        <article class="card">
+          <div class="card-head">
+            <div>
+              <h2>暗記カード</h2>
+              <p>熟語の意味と組み立てを短く確認できます。</p>
+            </div>
+            <span class="pill" id="flashCount"></span>
+          </div>
+          <div class="flash-grid" id="flashGrid"></div>
+        </article>
+      </section>
+
+      <section id="quiz" class="panel">
+        <article class="card">
+          <div class="quiz-head">
+            <h2>4択クイズ</h2>
+            <div class="progress" id="progress"></div>
+          </div>
+          <div class="question" id="question"></div>
+          <div class="choices" id="choices"></div>
+          <div class="result" id="result"></div>
+          <div class="row">
+            <button id="nextBtn" class="action" style="display:none;">次の問題</button>
+            <button id="restartBtn" class="sub">もう一回</button>
+          </div>
+        </article>
+      </section>
+
+      <section id="check" class="panel">
+        <article class="card">
+          <div class="card-head">
+            <div>
+              <h2>学習チェック</h2>
+              <p>意味と組み立てを両方で見分けられるか確認します。</p>
+            </div>
+            <span class="pill completion" id="completionRate"></span>
+          </div>
+          <div class="checklist" id="checklist"></div>
+        </article>
+      </section>
+    </main>
+
+    <footer id="footerNote"></footer>
+  </div>
+
+  <script src="study-app.js"></script>
+  <script>
+    initStudyApp({
+      storageKey: "kokugo-4-2",
+      pageTitle: "国語 4-2 熟語の意味・組み立て",
+      subject: "国語",
+      unit: "4-2 熟語の意味・組み立て",
+      description: "熟語がどんな意味のつながりでできているかを整理して、見分けられるようにするアプリです。",
+      meta: [
+        "範囲: 熟語の意味 / 熟語の組み立て",
+        "中心: 似た意味・反対・修飾・目的語・主語述語",
+        "こつ: 2つの漢字の関係を言葉で説明する"
+      ],
+      summaryPoints: [
+        { title: "似た意味の漢字の組み合わせ", body: "海洋・道路のように、似た意味の漢字を重ねてできている熟語があります。" },
+        { title: "反対の意味の漢字の組み合わせ", body: "上下・左右・大小のように、反対の意味を合わせた熟語があります。" },
+        { title: "上の字が下の字をくわしくする", body: "青空・白線のように、上の字が下の字をくわしく説明する熟語があります。" },
+        { title: "下の字が上の字の目的語になる", body: "読書・登山のように、『何をするか』の関係でできている熟語があります。" },
+        { title: "主語と述語の関係", body: "雪国・積雪のように、『何がどうする』の関係になっている熟語もあります。" }
+      ],
+      timeline: [
+        { year: "1", event: "2つの漢字の意味をそれぞれ確認する" },
+        { year: "2", event: "似た意味か、反対か、説明する関係かを考える" },
+        { year: "3", event: "文に直して『どんな関係か』を言ってみる" },
+        { year: "4", event: "同じ種類の熟語をまとめて覚える" }
+      ],
+      terms: [
+        { word: "修飾", meaning: "ある言葉が、ほかの言葉をくわしく説明すること。" },
+        { word: "目的語", meaning: "動作の対象になる言葉。『何を〜する』の『何を』にあたる。" },
+        { word: "主語", meaning: "『何が』にあたる言葉。" },
+        { word: "述語", meaning: "『どうする』『どんなだ』を表す言葉。" }
+      ],
+      flashcards: [
+        { front: "海洋", back: "似た意味の漢字の組み合わせ。" },
+        { front: "道路", back: "似た意味の漢字の組み合わせ。" },
+        { front: "上下", back: "反対の意味の漢字の組み合わせ。" },
+        { front: "左右", back: "反対の意味の漢字の組み合わせ。" },
+        { front: "青空", back: "上の字が下の字をくわしくする熟語。" },
+        { front: "白線", back: "上の字が下の字をくわしくする熟語。" },
+        { front: "読書", back: "下の字が上の字の目的語になる熟語。" },
+        { front: "登山", back: "下の字が上の字の目的語になる熟語。" },
+        { front: "積雪", back: "主語と述語の関係。雪が積もる。" },
+        { front: "雪国", back: "主語と述語の関係で覚えることが多い。雪の国。" },
+        { front: "国旗", back: "『国の旗』。上の字が下の字を説明する。" },
+        { front: "火山灰", back: "『火山から出た灰』。説明の関係。" }
+      ],
+      quiz: [
+        {
+          question: "『上下』はどんな組み立ての熟語？",
+          choices: ["似た意味", "反対の意味", "目的語の関係", "主語と述語"],
+          answerIndex: 1,
+          explanation: "上と下は反対の意味です。"
+        },
+        {
+          question: "『海洋』はどんな組み立ての熟語？",
+          choices: ["似た意味", "反対の意味", "修飾の関係", "目的語の関係"],
+          answerIndex: 0,
+          explanation: "海と洋はどちらも広い海に関係する、似た意味の漢字です。"
+        },
+        {
+          question: "『青空』の関係として正しいものはどれ？",
+          choices: ["空が青い", "青と空が反対", "青が空をくわしくする", "青が空を読む"],
+          answerIndex: 2,
+          explanation: "上の字の『青』が、下の字の『空』を説明しています。"
+        },
+        {
+          question: "『読書』を文にするとどれ？",
+          choices: ["書が読む", "書を読む", "読む書", "書の読み"],
+          answerIndex: 1,
+          explanation: "『何をするか』で考えると『書を読む』です。"
+        },
+        {
+          question: "『積雪』にいちばん近い説明はどれ？",
+          choices: ["雪を積む", "雪が積もる", "積んだ雪山", "雪の上"],
+          answerIndex: 1,
+          explanation: "主語と述語で考えると『雪が積もる』です。"
+        },
+        {
+          question: "『左右』と同じ仲間の熟語はどれ？",
+          choices: ["海洋", "読書", "前後", "白線"],
+          answerIndex: 2,
+          explanation: "前後も反対の意味の漢字の組み合わせです。"
+        },
+        {
+          question: "『国旗』の説明として正しいものはどれ？",
+          choices: ["旗が国を立てる", "国の旗", "国と旗が反対", "旗の国"],
+          answerIndex: 1,
+          explanation: "上の字が下の字を説明して『国の旗』となります。"
+        },
+        {
+          question: "『登山』と同じ組み立てなのはどれ？",
+          choices: ["白線", "道路", "読書", "左右"],
+          answerIndex: 2,
+          explanation: "どちらも『何をするか』で考える熟語です。"
+        },
+        {
+          question: "『白線』はどんな熟語？",
+          choices: ["反対の意味", "似た意味", "上の字が下の字を説明する", "主語と述語"],
+          answerIndex: 2,
+          explanation: "白い線、つまり上の字が下の字を説明しています。"
+        },
+        {
+          question: "『火山灰』の関係に近いものはどれ？",
+          choices: ["山を登る", "火山から出た灰", "灰が火山をつくる", "火と灰が反対"],
+          answerIndex: 1,
+          explanation: "『どんな灰か』を説明している熟語です。"
+        },
+        {
+          question: "『道路』に近い組み立てなのはどれ？",
+          choices: ["海洋", "読書", "青空", "積雪"],
+          answerIndex: 0,
+          explanation: "どちらも似た意味の漢字を重ねた熟語です。"
+        },
+        {
+          question: "熟語の組み立てを考えるとき、最初にするとよいことはどれ？",
+          choices: ["音読だけする", "2つの漢字の意味を確かめる", "書き順だけ見る", "長さをくらべる"],
+          answerIndex: 1,
+          explanation: "まずそれぞれの漢字の意味を確認すると、関係が見えてきます。"
+        }
+      ],
+      checkItems: [
+        { title: "熟語を見て、意味の関係を言える", note: "似た意味・反対・修飾などに分けられるようにします。" },
+        { title: "熟語を文に直して説明できる", note: "『何をする』『何がどうする』の形で言ってみます。" },
+        { title: "まぎらわしい熟語を比べて見分けられる", note: "読書と青空のように、種類のちがいを確認します。" },
+        { title: "ノートにも書いて復習した", note: "意味を書いておくと定着しやすいです。" }
+      ],
+      footer: "国語 4-2 は、添付画像をもとに『熟語の意味・組み立て』を中心に整理しています。"
+    });
+  </script>
+</body>
+</html>

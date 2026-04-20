@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>算数 4-2 テスト対策</title>
+  <link rel="stylesheet" href="study-app.css">
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div class="hero">
+        <span class="eyebrow" id="eyebrow"></span>
+        <div>
+          <h1 id="appTitle"></h1>
+          <p id="appDescription"></p>
+        </div>
+        <div class="hero-meta" id="heroMeta"></div>
+      </div>
+    </header>
+
+    <main>
+      <div class="row" style="margin-top:0;margin-bottom:16px;">
+        <a class="sub" href="index.html">教科一覧にもどる</a>
+      </div>
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="summary">まとめ</button>
+        <button class="tab-btn" data-tab="flash">暗記カード</button>
+        <button class="tab-btn" data-tab="quiz">4択クイズ</button>
+        <button class="tab-btn" data-tab="check">確認</button>
+      </div>
+
+      <section id="summary" class="panel active">
+        <div class="section-grid">
+          <article class="card">
+            <div class="card-head">
+              <h2>テスト範囲の要点</h2>
+              <span class="pill" id="pointCount"></span>
+            </div>
+            <div class="point-list" id="summaryPoints"></div>
+          </article>
+          <article class="card">
+            <div class="card-head">
+              <h2>計算の流れ</h2>
+              <span class="pill">図形と割合</span>
+            </div>
+            <div class="timeline" id="timeline"></div>
+          </article>
+          <article class="card">
+            <div class="card-head">
+              <h2>重要語句</h2>
+              <span class="pill">算数ことば</span>
+            </div>
+            <div class="terms" id="terms"></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="flash" class="panel">
+        <article class="card">
+          <div class="card-head">
+            <div>
+              <h2>暗記カード</h2>
+              <p>公式、割合、歩合の言いかえを確認できます。</p>
+            </div>
+            <span class="pill" id="flashCount"></span>
+          </div>
+          <div class="flash-grid" id="flashGrid"></div>
+        </article>
+      </section>
+
+      <section id="quiz" class="panel">
+        <article class="card">
+          <div class="quiz-head">
+            <h2>4択クイズ</h2>
+            <div class="progress" id="progress"></div>
+          </div>
+          <div class="question" id="question"></div>
+          <div class="choices" id="choices"></div>
+          <div class="result" id="result"></div>
+          <div class="row">
+            <button id="nextBtn" class="action" style="display:none;">次の問題</button>
+            <button id="restartBtn" class="sub">もう一回</button>
+          </div>
+        </article>
+      </section>
+
+      <section id="check" class="panel">
+        <article class="card">
+          <div class="card-head">
+            <div>
+              <h2>学習チェック</h2>
+              <p>公式と言いかえを使って解けるかを確認します。</p>
+            </div>
+            <span class="pill completion" id="completionRate"></span>
+          </div>
+          <div class="checklist" id="checklist"></div>
+        </article>
+      </section>
+    </main>
+    <footer id="footerNote"></footer>
+  </div>
+
+  <script src="study-app.js"></script>
+  <script>
+    initStudyApp({
+      storageKey: "sansu-4-2",
+      pageTitle: "算数 4-2 円と割合",
+      subject: "算数",
+      unit: "4-2 円と割合",
+      description: "円の周りの長さ・面積・おうぎ形・組み合わさった図形と、百分率・歩合・割合の利用をまとめて練習できます。",
+      meta: [
+        "範囲: 円 / おうぎ形 / 割合 / 歩合",
+        "中心: 公式を使う / もとにする量を見つける",
+        "こつ: 半径・中心角・割合のもとを先に見る"
+      ],
+      summaryPoints: [
+        { title: "円の周りの長さ", body: "直径 × 3.14 で求めます。半径しかないときは、先に直径に直します。" },
+        { title: "円の面積", body: "半径 × 半径 × 3.14 です。半径と直径をまちがえないようにします。" },
+        { title: "おうぎ形", body: "円の公式で求めたあと、中心角 ÷ 360 をかけます。弧の長さも同じ考え方です。" },
+        { title: "組み合わさった図形", body: "大きい図形から小さい図形を引いたり、分けて足したりして考えます。" },
+        { title: "百分率と歩合", body: "0.01 = 1% = 1/100、0.1 = 10% = 1割 です。小数・分数・百分率・歩合を行き来できるようにします。" }
+      ],
+      timeline: [
+        { year: "1", event: "図形問題は半径・直径・中心角を読み取る" },
+        { year: "2", event: "円やおうぎ形の公式に当てはめる" },
+        { year: "3", event: "割合問題は、くらべる量・もとにする量・割合を整理する" },
+        { year: "4", event: "小数・百分率・歩合に言いかえて答えを確認する" }
+      ],
+      terms: [
+        { word: "弧", meaning: "円周の一部分。" },
+        { word: "中心角", meaning: "円の中心を頂点にした角。" },
+        { word: "百分率", meaning: "100をもとにして表した割合。% を使う。" },
+        { word: "歩合", meaning: "10をもとにして表す割合。1割 = 10%、1分 = 1%。" }
+      ],
+      flashcards: [
+        { front: "円周の長さの公式", back: "直径 × 3.14" },
+        { front: "円の面積の公式", back: "半径 × 半径 × 3.14" },
+        { front: "おうぎ形の弧の長さ", back: "円周 × 中心角 ÷ 360" },
+        { front: "おうぎ形の面積", back: "円の面積 × 中心角 ÷ 360" },
+        { front: "0.25", back: "25% = 2割5分" },
+        { front: "0.6", back: "60% = 6割" },
+        { front: "0.125", back: "12.5% = 1割2分5厘" },
+        { front: "1%", back: "0.01 = 1/100 = 1分" },
+        { front: "10%", back: "0.1 = 1/10 = 1割" },
+        { front: "50%", back: "0.5 = 1/2 = 5割" },
+        { front: "割合の公式", back: "割合 = くらべる量 ÷ もとにする量" },
+        { front: "もとにする量の公式", back: "もとにする量 = くらべる量 ÷ 割合" }
+      ],
+      quiz: [
+        {
+          question: "半径3cmの円の周りの長さはどれ？",
+          choices: ["9.42cm", "18.84cm", "28.26cm", "37.68cm"],
+          answerIndex: 1,
+          explanation: "直径は6cmなので、6 × 3.14 = 18.84cm です。"
+        },
+        {
+          question: "半径4cmの円の面積はどれ？",
+          choices: ["12.56cm²", "25.12cm²", "50.24cm²", "16cm²"],
+          answerIndex: 2,
+          explanation: "4 × 4 × 3.14 = 50.24cm² です。"
+        },
+        {
+          question: "中心角90度のおうぎ形の面積は、円全体の何倍？",
+          choices: ["1/2", "1/3", "1/4", "1/5"],
+          answerIndex: 2,
+          explanation: "90 ÷ 360 = 1/4 なので、円全体の4分の1です。"
+        },
+        {
+          question: "0.25 を百分率で表すとどれ？",
+          choices: ["2.5%", "25%", "250%", "0.25%"],
+          answerIndex: 1,
+          explanation: "0.25 = 25/100 なので 25% です。"
+        },
+        {
+          question: "60% を歩合で表すとどれ？",
+          choices: ["6割", "6分", "60割", "6厘"],
+          answerIndex: 0,
+          explanation: "10% が1割なので、60% は6割です。"
+        },
+        {
+          question: "1割2分5厘 を小数で表すとどれ？",
+          choices: ["0.125", "0.25", "1.25", "0.0125"],
+          answerIndex: 0,
+          explanation: "1割 = 0.1、2分 = 0.02、5厘 = 0.005 なので 0.125 です。"
+        },
+        {
+          question: "割合を求める式として正しいものはどれ？",
+          choices: ["もとにする量 ÷ くらべる量", "くらべる量 ÷ もとにする量", "割合 × くらべる量", "割合 ÷ もとにする量"],
+          answerIndex: 1,
+          explanation: "割合 = くらべる量 ÷ もとにする量 です。"
+        },
+        {
+          question: "くらべる量が30、割合が0.6のとき、もとにする量はいくつ？",
+          choices: ["18", "36", "50", "180"],
+          answerIndex: 2,
+          explanation: "もとにする量 = 30 ÷ 0.6 = 50 です。"
+        },
+        {
+          question: "25% は分数で表すとどれ？",
+          choices: ["1/2", "1/4", "1/5", "2/5"],
+          answerIndex: 1,
+          explanation: "25% = 25/100 = 1/4 です。"
+        },
+        {
+          question: "半径6cm、中心角120度のおうぎ形の弧の長さはどれ？",
+          choices: ["6.28cm", "12.56cm", "12.56 × 2/3 cm", "37.68 × 1/3 cm"],
+          answerIndex: 3,
+          explanation: "円周は 12 × 3.14 = 37.68cm、120/360 = 1/3 です。"
+        },
+        {
+          question: "図形の面積で『大きい図形から小さい図形を引く』考え方が使いやすいのはどれ？",
+          choices: ["円の中がくりぬかれた形", "まっすぐな線だけの長方形", "1本の線分", "数字の表"],
+          answerIndex: 0,
+          explanation: "組み合わさった図形は、引いたり足したりして考えるのが基本です。"
+        },
+        {
+          question: "0.01 と同じ割合はどれ？",
+          choices: ["10%", "1%", "1割", "1分の10"],
+          answerIndex: 1,
+          explanation: "0.01 = 1/100 = 1% です。"
+        }
+      ],
+      checkItems: [
+        { title: "円の公式を使い分けられる", note: "周りの長さと面積をまちがえないようにします。" },
+        { title: "おうぎ形で中心角 ÷ 360 を使える", note: "面積でも弧の長さでも大事です。" },
+        { title: "小数・百分率・歩合を言いかえられる", note: "0.25、25%、2割5分のように確認します。" },
+        { title: "割合の3つの公式を使い分けられる", note: "くらべる量・もとにする量・割合の関係を整理します。" }
+      ],
+      footer: "算数 4-2 は、円とおうぎ形、組み合わさった図形、割合と歩合の範囲をまとめて練習できるようにしています。"
+    });
+  </script>
+</body>
+</html>
